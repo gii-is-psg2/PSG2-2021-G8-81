@@ -247,14 +247,21 @@
         </plugins>
     </build>
 
-    <!-- Apache 2 license -->
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
 
+  <developers>
+    <developer>
+      <id>FranAnillo</id>
+      <name>Francisco José Anillo Carrasco</name>
+      <email>fraanicar@alum.us.es</email>
+      <url>https://github.com/FranAnillo</url>
+      <organization>Universidad de Sevilla</organization>
+      <organizationUrl>https://github.com/gii-is-psg2/PSG2-2021-G8-81</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Spain/Madrid</timezone>
+    </developer>
+  </developers>
 
 
 </project>
