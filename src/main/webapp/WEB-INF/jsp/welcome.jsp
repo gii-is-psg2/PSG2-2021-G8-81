@@ -10,6 +10,7 @@
         <div class="col-md-12">
             <spring:url value="/resources/images/introImage.jpg" htmlEscape="true" var="petsImage"/>
             <img class="img-responsive" src="${petsImage}"/>
+            <h2>Welcome to the PSG2-2021-G8-81 Petclinic</h2>
         </div>
     </div>
 </petclinic:layout>
