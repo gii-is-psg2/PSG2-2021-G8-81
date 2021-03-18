@@ -287,6 +287,19 @@
     	</roles>
     	<timezone>Spain/Madrid</timezone>	
     </developer>
+    
+    <developer>
+      <id>tomrodrod</id>
+      <name>Tomás Francisco Rodríguez Rodríguez</name>
+      <email>tomrodrod@alum.us.es</email>
+      <url>https://github.com/tomrodrod</url>
+      <organization>Universidad de Sevilla</organization>
+      <organizationUrl>https://github.com/gii-is-psg2/PSG2-2021-G8-81</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Spain/Madrid</timezone>
+    </developer>
   </developers>
 
 
