@@ -7,26 +7,22 @@ project:
       url: 'https://github.com/gii-is-psg2/PSG2-2021-G8-81'
   members:
     member1:
-      name: 'José María'
-      surname: 'García' 
-      githubUsername: 'josemgarcia'
+      name: 'Roberto'
+      surname: 'Paz' 
+      githubUsername: 'robpazriv'
     member2:
-      name: 'Jose Antonio'
-      surname: 'Parejo'
-      githubUsername: 'japarejo'
+      name: 'Julia'
+      surname: 'Ibañez'
+      githubUsername: 'julibamon'
     member3:
-      name: 'Antonio'
-      surname: 'Ruiz'
-      githubUsername: 'antonioruizcortes'
+      name: 'Paula'
+      surname: 'Ferreira'
+      githubUsername: 'paulaferj'
     member4:
-      name: 'Carlos'
-      surname: 'Müller'
-      githubUsername: 'cmullercejas'
+      name: 'Francisco Jose'
+      surname: 'Anillo'
+      githubUsername: 'FranAnillo'
     member5:
-      name: 'Lola'
-      surname: 'De Acuña'
-      githubUsername: 'loladacuna'
-    member6:
-      name: 'Alfonso'
-      surname: 'Márquez'
-      githubUsername: 'alfedu'
+      name: 'Tomás'
+      surname: 'Rodriguez'
+      githubUsername: 'tomrodrod'
