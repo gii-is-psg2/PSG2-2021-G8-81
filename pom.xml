@@ -300,6 +300,18 @@
       </roles>
       <timezone>Spain/Madrid</timezone>
     </developer>
+        <developer>
+      <id>julibamon</id>
+      <name>Julia Ibáñez Montero</name>
+      <email>julibamon@alum.us.es</email>
+      <url>https://github.com/julibamon</url>
+      <organization>Universidad de Sevilla</organization>
+      <organizationUrl>https://github.com/gii-is-psg2/PSG2-2021-G8-81</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Spain/Madrid</timezone>
+    </developer>
   </developers>
 
 
