@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
@@ -64,9 +65,11 @@ public class VetController {
 		return vets;
 	}
 
-//	@DeleteMapping (value= {"/vets/{vetId}/delete"})
-//	public String deleteVet(@PathVariable ("vetId") int vetId, Model model) {
-//		Vet vet = this.vetService.f
-//		
-//	}
+	@GetMapping (value= {"/vets/{vetId}/delete"})
+	public String deleteVet(@PathVariable ("vetId") int vetId, Model model) {
+		
+		Vet vet = this.vetService.findVetById(vetId);
+		this.vetService.deletVet(vet);
+		return "vets/vetList";
+	}
 }
