@@ -41,6 +41,7 @@ public interface VetRepository extends Repository<Vet, Integer>{
 	 */
 	Collection<Vet> findAll() throws DataAccessException;
 
+	
 //	@Query("DELETE FROM Vet vet where vet.id=:id")
 //	void deleteVet(int vetId) throws DataAccessException;
 }

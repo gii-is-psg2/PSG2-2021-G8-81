@@ -64,7 +64,7 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query("DELETE FROM Owner owner where owner.id=:ownerId")
-	void deleteOwner(int ownerId) throws DataAccessException;
+	@Query("DELETE FROM Owner ow where ow.id=:ownerId")
+	void deleteOwner(@Param("ownerId")int ownerId) throws DataAccessException;
 
 }
