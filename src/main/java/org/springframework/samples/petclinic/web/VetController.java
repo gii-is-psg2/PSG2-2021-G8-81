@@ -19,7 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
@@ -61,4 +64,9 @@ public class VetController {
 		return vets;
 	}
 
+//	@DeleteMapping (value= {"/vets/{vetId}/delete"})
+//	public String deleteVet(@PathVariable ("vetId") int vetId, Model model) {
+//		Vet vet = this.vetService.f
+//		
+//	}
 }

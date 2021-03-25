@@ -76,4 +76,7 @@ public class OwnerService {
 		authoritiesService.saveAuthorities(owner.getUser().getUsername(), "owner");
 	}		
 
+	public void deleteOwner(Owner owner) throws DataAccessException {
+		ownerRepository.deleteOwner(owner.getId());
+	}
 }

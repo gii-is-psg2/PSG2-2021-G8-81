@@ -56,4 +56,7 @@ public class VetService {
 		return vetRepository.findAll();
 	}	
 
+//	public void deletVet (int vetId) throws DataAccessException{
+//		vetRepository.deleteVet(vetId);
+//	}
 }

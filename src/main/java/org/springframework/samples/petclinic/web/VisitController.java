@@ -20,11 +20,14 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.PetService;
 import org.springframework.samples.petclinic.service.VetService;
+import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -90,4 +93,14 @@ public class VisitController {
 		return "visitList";
 	}
 
+	@GetMapping (value = "/owners/*/pets/{petId}/visits/{visitId}")
+	public String deleteVisits(@PathVariable int petId, @PathVariable int visitId, Model model) {
+		Visit visit = this.petService.findVisitById(visitId);
+		Pet pet = this.petService.findPetById(petId);
+		
+		pet.deleteVisit(visit);
+		this.petService.deleteVisit(visit);
+		
+		return "redirect:/owners/{ownerId}";
+	}
 }
