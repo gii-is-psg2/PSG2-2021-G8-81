@@ -16,7 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${petsHotel}" var="petsHotel">
+			<c:forEach items="${petsHotel}" var="petHotel">
 				<tr>
 					<td><c:out value="${petHotel.dateEntry}" />
 					<td><c:out value="${petHotel.dateExit}" />

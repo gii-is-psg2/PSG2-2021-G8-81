@@ -20,12 +20,14 @@ private PetHotelRepository petHotelRepository;
 			this.petHotelRepository=petHotelRepository;
 		}
 		@Transactional
-		public void savePetHotel(PetHotel ph)  {
-			petHotelRepository.save(ph);
+		public void saveCita(PetHotel petHotel) throws DataAccessException {
+			petHotelRepository.save(petHotel);
+			
 		}
-		@Transactional (readOnly= true)
-		public Collection<PetHotel> findAllPetHotel() throws DataAccessException{
+		@Transactional(readOnly = true)
+		public Collection<PetHotel> findAllPetHotel() throws DataAccessException {
 			return (Collection<PetHotel>) petHotelRepository.findAll();
 		}
+		
 		
 }

@@ -26,13 +26,9 @@ private final PetHotelService petHotelService;
 
 
 @Autowired
-public PetHotelController (PetHotelService petHotelService,PetService petService,OwnerService ownerService) {
+public PetHotelController (PetHotelService petHotelService) {
 	this.petHotelService=petHotelService;
 
-}
-@InitBinder("petHotel")
-public void initPetBinder(WebDataBinder dataBinder) {
-	dataBinder.setValidator(new PetHotelValidator());
 }
 
 @GetMapping(value={"/petsHotel"})
@@ -57,7 +53,7 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 		return "redirect:/petHotel/new";
 	}
 
-	petHotelService.savePetHotel(petHotel);
+	this.petHotelService.saveCita(petHotel);
 	return "redirect:/petsHotel";
 }
 }

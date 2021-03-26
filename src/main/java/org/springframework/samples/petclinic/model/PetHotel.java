@@ -5,9 +5,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,18 +13,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "pet_hotel")
 public class PetHotel extends BaseEntity{
 
-@NotNull
+
 @Column(name = "date_entry")        
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private LocalDate dateEntry;
 
-@NotNull
+
 @Column(name = "date_exit")        
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private LocalDate dateExit;
 
-@NotNull
-@JoinColumn(name = "data")
+
+@Column(name = "data")
 private String data;
 
 public LocalDate getDateEntry() {
