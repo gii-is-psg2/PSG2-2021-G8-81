@@ -93,8 +93,8 @@ public class VisitController {
 		return "visitList";
 	}
 
-	@GetMapping (value = "/owners/*/pets/{petId}/visits/{visitId}")
-	public String deleteVisits(@PathVariable int petId, @PathVariable int visitId, Model model) {
+	@GetMapping (value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
+	public String deleteVisits(@PathVariable("petId") int petId, @PathVariable("visitId") int visitId, Model model) {
 		Visit visit = this.petService.findVisitById(visitId);
 		Pet pet = this.petService.findPetById(petId);
 		
