@@ -78,5 +78,12 @@ public class PetService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
+	public Collection<Pet> findAllPets(){
+		return petRepository.findAll();
+	}
+
+	public Collection<Pet> findPetsByOwner(Integer ownerId){
+		return petRepository.findByOwner(ownerId);
+	}
 
 }
