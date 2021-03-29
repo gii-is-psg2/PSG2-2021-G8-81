@@ -70,6 +70,6 @@ public class VetController {
 		
 		Vet vet = this.vetService.findVetById(vetId);
 		this.vetService.deletVet(vet);
-		return "vets/vetList";
+		return "redirect:/vets";
 	}
 }

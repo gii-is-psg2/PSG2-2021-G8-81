@@ -83,7 +83,7 @@ public class PetService {
 		return visitRepository.findById(visitId);
 	}
 	public void deletePet(Pet pet) throws DataAccessException{
-		petRepository.delete(pet.getId());
+		petRepository.deletePet(pet.getId());
 	}
 	
 	public void deleteVisit(Visit visit )throws DataAccessException{

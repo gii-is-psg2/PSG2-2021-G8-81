@@ -156,7 +156,7 @@ public class OwnerController {
 			this.petService.deletePet(p);
 		}
 		this.ownerService.deleteOwner(owner);;
-		return "redirect:/ownersList";
+		return "redirect:/owners";
 	}
 	
 }

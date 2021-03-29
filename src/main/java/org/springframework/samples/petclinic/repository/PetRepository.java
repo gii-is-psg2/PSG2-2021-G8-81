@@ -59,5 +59,5 @@ public interface PetRepository extends Repository<Pet, Integer> {
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM Pet pet where pet.id=:petId")
-	void delete(int petId) throws DataAccessException;
+	void deletePet(int petId) throws DataAccessException;
 }
