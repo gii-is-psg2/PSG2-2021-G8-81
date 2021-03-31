@@ -1,45 +1,70 @@
+/*
+ * Copyright 2002-2013 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.springframework.samples.petclinic.web;
 
 import java.time.LocalDate;
 
+import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetHotel;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-public class PetHotelValidator implements Validator{
 
-	
+/**
+ * <code>Validator</code> for <code>Pet</code> forms.
+ * <p>
+ * We're not using Bean Validation annotations here because it is easier to define such
+ * validation rule in Java.
+ * </p>
+ *
+ * @author Ken Krebs
+ * @author Juergen Hoeller
+ */
+public class PetHotelValidator implements Validator {
+
+	private static final String REQUIRED = "requerido";
+
+	@Override
 	public void validate(Object obj, Errors errors) {
-		
-		PetHotel petHotel = (PetHotel) obj;
-		LocalDate dateEntry = petHotel.getDateEntry();
-		LocalDate dateExit = petHotel.getDateExit();
-		String data = petHotel.getData();
-		if (dateEntry==null) {
-			errors.rejectValue("dateEntry", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
+		PetHotel pet = (PetHotel) obj;
+		LocalDate dateEntry = pet.getDateEntry();
+		LocalDate dateExit = pet.getDateExit();
+		// type validation
+		if (dateEntry == null) {
+			errors.rejectValue("dateEntry", REQUIRED, REQUIRED);
 		}
 		else if (dateEntry.isBefore(LocalDate.now())) {
 			errors.rejectValue("dateEntry", " debe ser posterior a hoy",
 					" debe ser posterior a hoy");}
-		
-		if (dateExit==null) {
-			errors.rejectValue("dateExit", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
-			}
+		// birth date validation
+		if (dateExit== null) {
+			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
+		}
 		else if (dateExit.isBefore(dateEntry)) {
 			errors.rejectValue("dateExit", " debe ser posterior a la fecha de entrada",
 					" debe ser posterior a la fecha de entrada");}
-		if (data==null) {
-			errors.rejectValue("data", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
-			}
-		
-		
 	}
 
-	
+	/**
+	 * This Validator validates *just* Pet instances
+	 */
+	@Override
 	public boolean supports(Class<?> clazz) {
 		return PetHotel.class.isAssignableFrom(clazz);
 	}
+
 }

@@ -18,14 +18,25 @@
     </jsp:attribute>
     <jsp:body>
         <h2>
-            <c:if test="${pet['new']}">Nueva </c:if> reserva en el hotel
+           Nueva reserva en el hotel
         </h2>
   <form:form modelAttribute="petHotel" class="form-horizontal" id="add-petHotel-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Fecha de entrada" name="dateEntry" />
             <petclinic:inputField label="Dia de salida" name="dateExit" />
-           <label for="vehiculo">Rellene en el siguiente cuadro de texto el nombre de su mascuta y cualquier otro dato que sea de utilidad</label>
-		<petclinic:inputField label="" name="dateExit" />
+ <div class="control-group">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><c:out value="Escoja una mascota"/></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <select name="pet.id" id="pet.id"> 
+  		<c:forEach items="${pet}" var="pet">
+  		<option  value="${pet.id}" ><c:out value="${pet.name}" /></option> 
+    </c:forEach>
+  </select> 
+  <br>
+       
+                </div>	
+                 <br>
+                 
+		 <petclinic:inputField label="Datos de interés" name="description" />
 </div>
         <sec:authorize access="hasAuthority('owner')">
         <div class="form-group">

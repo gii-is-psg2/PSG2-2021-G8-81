@@ -5,27 +5,49 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "pet_hotel")
 public class PetHotel extends BaseEntity{
 
-
-@Column(name = "date_entry")        
+@NotNull
+@Column(name = "dateEntry")        
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private LocalDate dateEntry;
 
-
-@Column(name = "date_exit")        
+@NotNull
+@Column(name = "dateExit")        
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private LocalDate dateExit;
 
+@NotNull
+@ManyToOne
+@JoinColumn(name = "pet_id")
+private Pet pet;
 
-@Column(name = "data")
-private String data;
+
+@Column(name = "description")
+private String description;
+
+//public PetHotel() {
+//	this.dateEntry = LocalDate.now();
+//	this.dateExit =dateEntry.plusDays(1);
+//}
+public String getDescription() {
+	return description;
+}
+
+public void setDescription(String description) {
+	this.description = description;
+}
 
 public LocalDate getDateEntry() {
 	return dateEntry;
@@ -43,12 +65,12 @@ public void setDateExit(LocalDate dateExit) {
 	this.dateExit = dateExit;
 }
 
-public String getData() {
-	return data;
+public Pet getPet() {
+	return pet;
 }
 
-public void setData(String data) {
-	this.data = data;
+public void setPet(Pet pet) {
+	this.pet = pet;
 }
 
 }
