@@ -75,9 +75,13 @@ public String initCreationForm(ModelMap model) {
 @PostMapping(value = "/petHotel/new")
 public String processCreationForm(@Valid PetHotel petHotel, BindingResult result,
 		ModelMap modelMap) throws DataAccessException{
+	UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	String user = clienteDetails.getUsername();
+	List<Pet> list = ownerService.findOwnerByUsername(user).getPets();
+	modelMap.put("pet", list);
 	if(result.hasErrors()) {
 		modelMap.put("petHotel", petHotel);
-		return "redirect:/petHotel/new";
+		return "petHotel/booking";
 	}
 	Pet pet = petService.findPetById(petHotel.getPet().getId());
 	petHotel.setPet(pet);

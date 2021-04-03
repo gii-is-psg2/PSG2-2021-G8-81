@@ -37,10 +37,10 @@ private Pet pet;
 @Column(name = "description")
 private String description;
 
-//public PetHotel() {
-//	this.dateEntry = LocalDate.now();
-//	this.dateExit =dateEntry.plusDays(1);
-//}
+public PetHotel() {
+	this.dateEntry = LocalDate.now();
+	this.dateExit =dateEntry.plusDays(1);
+}
 public String getDescription() {
 	return description;
 }

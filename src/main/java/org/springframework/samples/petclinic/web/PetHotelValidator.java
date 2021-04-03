@@ -17,9 +17,7 @@ package org.springframework.samples.petclinic.web;
 
 import java.time.LocalDate;
 
-import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetHotel;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -41,22 +39,23 @@ public class PetHotelValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		PetHotel pet = (PetHotel) obj;
-		LocalDate dateEntry = pet.getDateEntry();
-		LocalDate dateExit = pet.getDateExit();
-		// type validation
-		if (dateEntry == null) {
+
+		if (pet.getDateEntry() == null) {
 			errors.rejectValue("dateEntry", REQUIRED, REQUIRED);
 		}
-		else if (dateEntry.isBefore(LocalDate.now())) {
+		else if (pet.getDateEntry().isBefore(LocalDate.now())) {
 			errors.rejectValue("dateEntry", " debe ser posterior a hoy",
 					" debe ser posterior a hoy");}
-		// birth date validation
-		if (dateExit== null) {
+		else if (pet.getDateExit()== null) {
 			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
-		}
-		else if (dateExit.isBefore(dateEntry)) {
+			}
+		if (pet.getDateEntry()!=null && pet.getDateExit()!=null && pet.getDateExit().isBefore(pet.getDateEntry())) {
 			errors.rejectValue("dateExit", " debe ser posterior a la fecha de entrada",
 					" debe ser posterior a la fecha de entrada");}
+		if (pet.getDateExit()== null) {
+			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
+		}
+		
 	}
 
 	/**
