@@ -153,6 +153,7 @@ public class OwnerController {
 		Owner owner = this.ownerService.findOwnerById(ownerId);
 		List<Pet> pets= owner.getPets();
 		for(Pet p : pets) {
+			this.petService.deleteAllVisits(p);
 			this.petService.deletePet(p);
 		}
 		this.ownerService.deleteOwner(owner);;

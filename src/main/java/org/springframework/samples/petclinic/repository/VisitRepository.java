@@ -49,11 +49,14 @@ public interface VisitRepository extends Repository<Visit, Integer> {
 
 	List<Visit> findByPetId(Integer petId);
 
+
+	
 	@Query("SELECT visit FROM Visit visit  WHERE visit.id=:visitId")
 	public Visit findById(int visitId);
 	
+	
 	@Transactional
 	@Modifying
-	@Query("DELETE FROM Visit visit WHERE visit.id=:visitId")
-	void deleteVisit(int visitId) throws DataAccessException;
+	@Query("DELETE FROM Visit visit WHERE visit.pet.id=:petId")
+	void deleteAllVisit(int petId) throws DataAccessException;
 }

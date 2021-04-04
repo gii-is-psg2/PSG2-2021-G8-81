@@ -85,9 +85,11 @@ public class PetService {
 	public void deletePet(Pet pet) throws DataAccessException{
 		petRepository.deletePet(pet.getId());
 	}
+
+
 	
-	public void deleteVisit(Visit visit )throws DataAccessException{
-		visitRepository.deleteVisit(visit.getId());
+	public void deleteAllVisits(Pet pet) throws DataAccessException{
+		visitRepository.deleteAllVisit(pet.getId());
 	}
 
 }

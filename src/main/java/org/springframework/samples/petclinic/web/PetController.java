@@ -152,11 +152,12 @@ public class PetController {
 		}
 	}
       
-        @GetMapping(value= "/pets/{petId}/delete")
+       @GetMapping(value= "/pets/{petId}/delete")
       public String deletePet (@PathVariable ("petId")int petId, @PathVariable ("ownerId")int ownerId) {
         	Pet pet = this.petService.findPetById(petId);
         	Owner owner = this.ownerService.findOwnerById(ownerId);
         	owner.removePet(pet);
+        	this.petService.deleteAllVisits(pet);
         	this.petService.deletePet(pet);
         	
         	return "redirect:/owners/{ownerId}";
