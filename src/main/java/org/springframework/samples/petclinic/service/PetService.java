@@ -78,7 +78,6 @@ public class PetService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
-<
 	
 	public Visit findVisitById(int visitId) {
 		return visitRepository.findById(visitId);
@@ -91,7 +90,7 @@ public class PetService {
 	
 	public void deleteAllVisits(Pet pet) throws DataAccessException{
 		visitRepository.deleteAllVisit(pet.getId());
-
+	}
 	public Collection<Pet> findAllPets(){
 		return petRepository.findAll();
 	}
