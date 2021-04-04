@@ -18,8 +18,11 @@ package org.springframework.samples.petclinic.repository;
 import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Repository class for <code>Vet</code> domain objects All method names are compliant
@@ -40,4 +43,12 @@ public interface VetRepository extends Repository<Vet, Integer>{
 	 */
 	Collection<Vet> findAll() throws DataAccessException;
 
+	Vet findById (int vetId) throws DataAccessException;
+	
+	
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM Vet vet where vet.id=:vetId")
+	void deleteVet(int vetId) throws DataAccessException;
+	
 }

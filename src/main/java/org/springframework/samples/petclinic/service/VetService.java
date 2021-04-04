@@ -56,4 +56,11 @@ public class VetService {
 		return vetRepository.findAll();
 	}	
 
+	@Transactional(readOnly = true)
+	public Vet findVetById(int id) throws DataAccessException {
+		return vetRepository.findById(id);
+	}
+	public void deletVet (Vet vet) throws DataAccessException{
+		vetRepository.deleteVet(vet.getId());
+	}
 }

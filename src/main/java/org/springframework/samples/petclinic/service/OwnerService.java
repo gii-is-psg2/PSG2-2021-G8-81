@@ -81,4 +81,7 @@ public class OwnerService {
 		return ownerRepository.findByUsername(username);
 	}	
 
+	public void deleteOwner(Owner owner) throws DataAccessException {
+		ownerRepository.deleteOwner(owner.getId());
+	}
 }
