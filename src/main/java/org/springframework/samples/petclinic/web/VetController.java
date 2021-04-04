@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.VetService;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -72,7 +74,9 @@ public class VetController {
 	@GetMapping(value = "/vets/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Vet vet = new Vet();
+		List<Specialty> specialties = vetService.findListSpecialties();
 		model.put("vet", vet);
+		model.put("specialties", specialties);
 		return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 	}
 	
@@ -81,6 +85,8 @@ public class VetController {
 		if(result.hasErrors()){
 			return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 		}else {
+			List<Specialty> specialties = vetService.findListSpecialties();
+			vet.addSpecialty(specialties.get(1));
 			this.vetService.saveVet(vet);
 			return "redirect:/vets";
 		}
