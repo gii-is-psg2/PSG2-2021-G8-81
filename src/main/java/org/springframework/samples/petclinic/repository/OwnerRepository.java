@@ -67,4 +67,7 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	@Query("DELETE FROM Owner ow where ow.id=:ownerId")
 	void deleteOwner(@Param("ownerId")int ownerId) throws DataAccessException;
 
+	@Query("SELECT o FROM Owner o WHERE o.user.username = :username")
+	public Owner findByUsername(@Param("username")String username);
+
 }
