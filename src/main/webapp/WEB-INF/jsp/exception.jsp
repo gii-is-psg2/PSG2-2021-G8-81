@@ -1,4 +1,5 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
@@ -7,7 +8,7 @@
     <spring:url value="/resources/images/error.jpg" var="petsImage"/>
     <img src="${petsImage}"/>
 
-    <h2>Something happened...</h2>
+    <h2><fmt:message key="merror"/></h2>
 
     <p>${exception.message}</p>
 
