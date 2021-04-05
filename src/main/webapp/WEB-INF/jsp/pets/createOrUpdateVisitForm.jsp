@@ -4,6 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <petclinic:layout pageName="owners">
     <jsp:attribute name="customScript">
@@ -14,16 +18,16 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <h2><c:if test="${visit['new']}">New </c:if>Visit</h2>
+        <h2><c:if test="${visit['new']}"><fmt:message key="new"/> </c:if><fmt:message key="visit"/></h2>
 
-        <b>Pet</b>
+        <b><fmt:message key="pet"/></b>
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Birth Date</th>
-                <th>Type</th>
-                <th>Owner</th>
+                <th><fmt:message key="name"/></th>
+                <th><fmt:message key="birthdate"/></th>
+                <th><fmt:message key="type"/></th>
+                <th><fmt:message key="ow"/></th>
             </tr>
             </thead>
             <tr>
@@ -36,24 +40,26 @@
 
         <form:form modelAttribute="visit" class="form-horizontal">
             <div class="form-group has-feedback">
-                <petclinic:inputField label="Date" name="date"/>
-                <petclinic:inputField label="Description" name="description"/>
+            	<fmt:message var="date" key="date"/>
+            	<fmt:message var="description" key="description"/>
+                <petclinic:inputField label="${date}" name="date"/>
+                <petclinic:inputField label="${description}" name="description"/>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="hidden" name="petId" value="${visit.pet.id}"/>
-                    <button class="btn btn-default" type="submit">Add Visit</button>
+                    <button class="btn btn-default" type="submit"><th><fmt:message key="avisit"/></th></button>
                 </div>
             </div>
         </form:form>
 
         <br/>
-        <b>Previous Visits</b>
+        <b><fmt:message key="previous"/></b>
         <table class="table table-striped">
             <tr>
-                <th>Date</th>
-                <th>Description</th>
+                <th><fmt:message key="date"/></th>
+                <th><fmt:message key="description"/></th>
             </tr>
             <c:forEach var="visit" items="${visit.pet.visits}">
                 <c:if test="${!visit['new']}">

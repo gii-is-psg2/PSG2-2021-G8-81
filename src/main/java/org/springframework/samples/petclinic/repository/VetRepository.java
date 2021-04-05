@@ -19,10 +19,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.transaction.annotation.Transactional;
 
 
 public interface VetRepository extends Repository<Vet, Integer>{
@@ -36,4 +38,14 @@ public interface VetRepository extends Repository<Vet, Integer>{
 	
 	void save(Vet vet) throws DataAccessException;
 	Vet findById(int id);
+
+
+	
+	
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM Vet vet where vet.id=:vetId")
+	void deleteVet(int vetId) throws DataAccessException;
+	
+
 }
