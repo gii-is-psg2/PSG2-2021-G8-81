@@ -17,9 +17,7 @@
         
             <petclinic:inputField label="Nombre" name="firstName"/>
             <petclinic:inputField label="Apellido" name="lastName"/>
-            <div class="control-group">
-                    <petclinic:selectField name="specialties" label="Specialties" names="${specialties}" size="5"/>
-            </div>
+            <petclinic:selectField label="Specialties" name="specialties" names="${specialties}" size=""/>
             
         </div>
         <div class="form-group">

@@ -54,7 +54,7 @@ public class VetService {
 	}
 	
 	@Transactional(readOnly=true)
-	public List<Specialty> findListSpecialties() throws DataAccessException{
+	public Collection<Specialty> findCollectSpecialties() throws DataAccessException{
 		return this.vetRepository.findSpecialties();
 	}
 	

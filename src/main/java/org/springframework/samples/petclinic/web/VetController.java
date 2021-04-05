@@ -22,12 +22,15 @@ import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -46,8 +49,8 @@ public class VetController {
 	private final VetService vetService;
 
 	@Autowired
-	public VetController(VetService clinicService) {
-		this.vetService = clinicService;
+	public VetController(VetService vetService) {
+		this.vetService = vetService;
 	}
 
 	@GetMapping(value = { "/vets" })
@@ -74,19 +77,18 @@ public class VetController {
 	@GetMapping(value = "/vets/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Vet vet = new Vet();
-		List<Specialty> specialties = vetService.findListSpecialties();
+		Collection<Specialty> specialties = vetService.findCollectSpecialties();
 		model.put("vet", vet);
 		model.put("specialties", specialties);
 		return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 	}
 	
 	@PostMapping(value="/vets/new")
-	public String processCreationForm(@Valid final Vet vet, final BindingResult result) {
+	public String processCreationForm(@Valid final Vet vet, final BindingResult result, final ModelMap model) {
 		if(result.hasErrors()){
 			return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 		}else {
-			List<Specialty> specialties = vetService.findListSpecialties();
-			vet.addSpecialty(specialties.get(1));
+			
 			this.vetService.saveVet(vet);
 			return "redirect:/vets";
 		}
@@ -95,6 +97,8 @@ public class VetController {
 	@GetMapping(value = "/vets/{vetId}/edit")
 	public String initUpdateVetForm(@PathVariable("vetId") final int vetId, final Model model) {
 		Vet vet = this.vetService.findVetById(vetId);
+		Collection<Specialty> specialties = vetService.findCollectSpecialties();
+		model.addAttribute("specialties", specialties);
         model.addAttribute(vet);
         return VIEWS_VETS_CREATE_OR_UPDATE_FORM;
     
@@ -107,7 +111,7 @@ public class VetController {
         } else {
             vet.setId(vetId);
             this.vetService.saveVet(vet);
-            return "redirect:/vets/{vetId}";
+            return "redirect:/vets";
         }
     }
 }
