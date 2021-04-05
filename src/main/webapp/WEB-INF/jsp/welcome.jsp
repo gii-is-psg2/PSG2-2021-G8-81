@@ -13,7 +13,7 @@
             <img class="img-responsive" src="${petsImage}"/>
 
             <h2><fmt:message key="group"/></h2>
-		        <a class="btn btn-default" href='<spring:url value="/petsHotel" htmlEscape="true"/>'>Mascotas en el hotel</a>
+		        <a class="btn btn-default" href='<spring:url value="/petsHotel" htmlEscape="true"/>'><fmt:message key="photel"/></a>
 
         </div>
 

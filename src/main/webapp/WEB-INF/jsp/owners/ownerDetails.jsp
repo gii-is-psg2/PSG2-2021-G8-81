@@ -43,7 +43,7 @@
 	<spring:url value="/owners/{ownerId}/delete" var="deleteUrl">
         <spring:param name="ownerId" value="${owner.id}"/>
     </spring:url>
-   <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Owner</a>
+   <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="downer"/></a>
    
 
     <br/>
@@ -83,7 +83,7 @@
                                     <spring:param name="petId" value="${pet.id}"/>
                                     <spring:param name="visitId" value="${visit.id}"/>
                                 </spring:url>
-                                <a href="${fn:escapeXml(deleteVisit)}">Delete Visit</a>
+                                <a href="${fn:escapeXml(deleteVisit)}"><fmt:message key="dvisit"/></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -100,7 +100,7 @@
                                     <spring:param name="ownerId" value="${owner.id}"/>
                                     <spring:param name="petId" value="${pet.id}"/>
                                 </spring:url>
-                                <a href="${fn:escapeXml(deletePet)}">Delete Pet</a>
+                                <a href="${fn:escapeXml(deletePet)}"><fmt:message key="dpet"/></a>
                             </td>
                             <td>
                                 <spring:url value="/owners/{ownerId}/pets/{petId}/visits/new" var="visitUrl">
