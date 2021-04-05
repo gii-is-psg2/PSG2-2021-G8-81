@@ -31,7 +31,7 @@
                 	<spring:url value="/vets/{vetId}/delete" var="deleteUrl">
         			<spring:param name="vetId" value="${vet.id}"/>
     				</spring:url>
-  			 <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Vet</a>
+  			 <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="dvet"/></a>
                 </td>
             </tr>
         </c:forEach>
