@@ -9,36 +9,29 @@ import org.springframework.validation.Validator;
 public class PetHotelValidator implements Validator{
 
 	
+	private static final String REQUIRED = "requerido";
+
+	@Override
 	public void validate(Object obj, Errors errors) {
-		
-		PetHotel petHotel = (PetHotel) obj;
-		LocalDate dateEntry = petHotel.getDateEntry();
-		LocalDate dateExit = petHotel.getDateExit();
-		String data = petHotel.getData();
-		if (dateEntry==null) {
-			errors.rejectValue("dateEntry", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
+		PetHotel pet = (PetHotel) obj;
+
+		if (pet.getDateEntry() == null) {
+			errors.rejectValue("dateEntry", REQUIRED, REQUIRED);
 		}
-		else if (dateEntry.isBefore(LocalDate.now())) {
+		else if (pet.getDateEntry().isBefore(LocalDate.now())) {
 			errors.rejectValue("dateEntry", " debe ser posterior a hoy",
 					" debe ser posterior a hoy");}
-		
-		if (dateExit==null) {
-			errors.rejectValue("dateExit", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
+		else if (pet.getDateExit()== null) {
+			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
 			}
-		else if (dateExit.isBefore(dateEntry)) {
+		if (pet.getDateEntry()!=null && pet.getDateExit()!=null && pet.getDateExit().isBefore(pet.getDateEntry())) {
 			errors.rejectValue("dateExit", " debe ser posterior a la fecha de entrada",
 					" debe ser posterior a la fecha de entrada");}
-		if (data==null) {
-			errors.rejectValue("data", " No puede dejar el campo vacio",
-					"No puede dejar el campo vacio");
-			}
-		
+		if (pet.getDateExit()== null) {
+			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
+		}
 		
 	}
-
-	
 	public boolean supports(Class<?> clazz) {
 		return PetHotel.class.isAssignableFrom(clazz);
 	}
