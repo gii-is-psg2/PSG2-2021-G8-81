@@ -1,4 +1,4 @@
-# Niko Niko Calendar of team X
+# Niko Niko Calendar of team G8-81
 ## Introduction
 Some interesting links about what a Niko Niko calendar is and opinions about its use in software development:
 
@@ -30,12 +30,12 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 5         |    :fearful:   (I´m desperate, I need help)        |
 
 
-## Sprint Template
+## Sprint 3: L3-Measurement 
 
-| Day           | JAPAREJO    | Juanito  | [Member C]     | [Member D]     | [Member E]     | [Member F]     |
-| ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| Day 1         | :smile:        |                |                |                |                |                |
-| Day 2         |               |    :smile:            |                |                |                |                |
-| Day 3         |               |    :worried:            |                |                |                |                |
-| Day 4         |  :neutral_face:             |               |                |                |                |                |
+| Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
+| ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
+| Day 1         | :smile:       |               |                |                |                |
+| Day 2         |               |    :smile:    |                |                |                |
+| Day 3         |               |    :worried:  |                |                |                |
+| Day 4         |               |               |                |                |                |
 ...
