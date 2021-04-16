@@ -5,14 +5,14 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="petsHotel">
-	<h2>Mascotas en el hotel</h2>
+	<h2><fmt:message key="photel"/></h2>
 
 	<table id="tablePetsHotel" class="table table-striped">
 		<thead>
 			<tr>
-				<th style="width: 100px;">Fecha de entrada</th>
-				<th style="width: 100px;">Fecha de salida</th>
-				<th style="width: 100px;">Datos</th>
+				<th style="width: 100px;"><fmt:message key="adate"/></th>
+				<th style="width: 100px;"><fmt:message key="ddate"/></th>
+				<th style="width: 100px;"><fmt:message key="datum"/></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,7 +26,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-<a class="btn btn-default" href='<spring:url value="/petHotel/new" htmlEscape="true"/>'>Solicitar estancia para mi mascota</a>
+<a class="btn btn-default" href='<spring:url value="/petHotel/new" htmlEscape="true"/>'><fmt:message key="request"/></a>
 	
 	<br />
 

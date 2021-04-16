@@ -78,12 +78,26 @@ public class PetService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
+	
+	public Visit findVisitById(int visitId) {
+		return visitRepository.findById(visitId);
+	}
+	public void deletePet(Pet pet) throws DataAccessException{
+		petRepository.deletePet(pet.getId());
+	}
+
+
+	
+	public void deleteAllVisits(Pet pet) throws DataAccessException{
+		visitRepository.deleteAllVisit(pet.getId());
+	}
 	public Collection<Pet> findAllPets(){
 		return petRepository.findAll();
 	}
 
 	public Collection<Pet> findPetsByOwner(Integer ownerId){
 		return petRepository.findByOwner(ownerId);
+
 	}
 
 }
