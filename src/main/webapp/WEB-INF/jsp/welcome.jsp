@@ -14,6 +14,7 @@
 
             <h2><fmt:message key="group"/></h2>
 		        <a class="btn btn-default" href='<spring:url value="/petsHotel" htmlEscape="true"/>'><fmt:message key="photel"/></a>
+		        <a class="btn btn-default" href='<spring:url value="/causes" htmlEscape="true"/>'>Causes</a>
 
         </div>
 
