@@ -20,4 +20,10 @@ public class DonationService {
 	public Collection<Donation> findAllDonations(){
 		return donationRepository.findAll();
 	}
+
+	@Transactional(readOnly= true)
+	public Collection<Donation> findAllDonationsByCause(Integer id){
+		return donationRepository.findDonationsByCause(id);
+	}
+
 }

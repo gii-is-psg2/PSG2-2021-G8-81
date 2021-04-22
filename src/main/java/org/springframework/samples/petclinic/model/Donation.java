@@ -22,9 +22,17 @@ private LocalDateTime date;
 @JoinColumn(name= "owner_id")
 private Owner owner;
 
-//@ManyToOne
-//@JoinColumn(name= "cause")
-//private Cause cause;
+@ManyToOne
+@JoinColumn(name= "cause")
+private Cause cause;
+
+public Cause getCause() {
+	return cause;
+}
+
+public void setCause(Cause cause) {
+	this.cause = cause;
+}
 
 public Integer getMoney() {
 	return money;

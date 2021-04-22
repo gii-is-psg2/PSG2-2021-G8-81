@@ -12,10 +12,13 @@ import org.springframework.samples.petclinic.model.Donation;
 public interface DonationRepository extends Repository<Donation, Integer>{
 
 @Query("SELECT donation FROM Donation donation WHERE donation.date:= date")
-List<Donation> fondDonationsByDate (@Param("date") LocalDateTime date);
+List<Donation> findDonationsByDate (@Param("date") LocalDateTime date);
 
 void save(Donation donation) throws DataAccessException;
 
 Collection<Donation> findAll()throws DataAccessException;
+
+@Query("SELECT donation FROM Donation donation WHERE donation.cause.id:= id")
+List<Donation> findDonationsByCause (@Param("id") Integer causeId);
 
 }
