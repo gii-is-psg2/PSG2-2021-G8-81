@@ -1,0 +1,141 @@
+/*
+ * Copyright 2002-2013 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.springframework.samples.petclinic.web;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vets;
+import org.springframework.samples.petclinic.repository.PetRepository;
+import org.springframework.samples.petclinic.service.AuthoritiesService;
+import org.springframework.samples.petclinic.service.CauseService;
+import org.springframework.samples.petclinic.service.OwnerService;
+import org.springframework.samples.petclinic.service.PetService;
+import org.springframework.samples.petclinic.service.VetService;
+import org.springframework.samples.petclinic.service.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * @author Juergen Hoeller
+ * @author Ken Krebs
+ * @author Arjen Poutsma
+ * @author Michael Isvy
+ */
+@Controller
+public class CauseController {
+
+	private static final String VIEWS_CAUSE_CREATE_OR_UPDATE_FORM = "cause/createCauseForm";
+
+	private final CauseService causeService;
+
+	@Autowired
+	public CauseController(CauseService causeService) {
+		this.causeService = causeService;
+	}
+
+	@InitBinder
+	public void setAllowedFields(WebDataBinder dataBinder) {
+		dataBinder.setDisallowedFields("id");
+	}	
+	
+	@GetMapping(value = "/causes")
+	public String showCauseList(Map<String, Object> model) {
+		Collection<Cause> causes = causeService.findCauses();
+		model.put("causes", causes);
+		Cause cause = new Cause(); 
+		model.put("cause", cause);
+		return "cause/causeList";
+	}
+
+	@GetMapping(value = "/causes/new")
+	public String initCreationForm(Map<String, Object> model) {
+		Cause cause = new Cause();
+		model.put("cause", cause);
+		return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+	}
+
+	@PostMapping(value = "/causes/new")
+	public String processCreationForm(@Valid Cause cause, BindingResult result) {
+		if (result.hasErrors()) {
+			return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+		}
+		else {
+			//creating owner, user and authorities
+			this.causeService.saveCause(cause);
+			
+			return "redirect:/causes";
+		}
+	}
+
+	
+//	@GetMapping(value = "/owners/{ownerId}/edit")
+//	public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
+//		Owner owner = this.ownerService.findOwnerById(ownerId);
+//		model.addAttribute(owner);
+//		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+//	}
+//
+//	@PostMapping(value = "/owners/{ownerId}/edit")
+//	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
+//			@PathVariable("ownerId") int ownerId) {
+//		if (result.hasErrors()) {
+//			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+//		}
+//		else {
+//			owner.setId(ownerId);
+//			this.ownerService.saveOwner(owner);
+//			return "redirect:/owners/{ownerId}";
+//		}
+//	}
+//
+//	/**
+//	 * Custom handler for displaying an owner.
+//	 * @param ownerId the ID of the owner to display
+//	 * @return a ModelMap with the model attributes for the view
+//	 */
+//	@GetMapping("/owners/{ownerId}")
+//	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
+//		ModelAndView mav = new ModelAndView("owners/ownerDetails");
+//		mav.addObject(this.ownerService.findOwnerById(ownerId));
+//		return mav;
+//	}
+//
+//	@GetMapping(value = "/owners/{ownerId}/delete")
+//	public String deleteOwner(@PathVariable ("ownerId") int ownerId, Model model) {
+//		Owner owner = this.ownerService.findOwnerById(ownerId);
+//		List<Pet> pets= owner.getPets();
+//		for(Pet p : pets) {
+//			this.petService.deleteAllVisits(p);
+//			this.petService.deletePet(p);
+//		}
+//		this.ownerService.deleteOwner(owner);;
+//		return "redirect:/owners";
+//	}
+	
+}
