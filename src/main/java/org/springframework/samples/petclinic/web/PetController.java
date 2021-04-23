@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.BeanUtils;
@@ -162,5 +163,13 @@ public class PetController {
         	
         	return "redirect:/owners/{ownerId}";
         }
+       
+       @GetMapping(value = "/adopcion")
+   	public String darAdopcion(Pet pet, @PathVariable ("ownerId")int ownerId) {
+   		List<Pet> listaPetPorOwner = this.ownerService.findOwnerById(ownerId).getPets();
+   		listaPetPorOwner.remove(pet);
+   		return "redirect:/owners/find";
+   	}
+   	
 
 }

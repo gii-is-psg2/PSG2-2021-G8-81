@@ -109,6 +109,12 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}"><fmt:message key="avisit"/></a>
                             </td>
+                             <td>
+                                <spring:url value="/owners/{ownerId}/adopcion" var="darAdopcion">
+                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                </spring:url>
+                                <a href="${fn:escapeXml(darAdopcion)}">Dar mascota en adopcion</a>
+                            </td>
                         </tr>
                     </table>
                 </td>
