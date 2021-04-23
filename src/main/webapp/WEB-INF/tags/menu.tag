@@ -46,6 +46,11 @@
 					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
 					<span><fmt:message key="error"/></span>
 				</petclinic:menuItem>
+				
+				<petclinic:menuItem active="${name eq 'cause'}" url="/causes"
+					title="trigger a RuntimeException to see how it is handled">
+					<span>Causes</span>
+				</petclinic:menuItem>
 
 			</ul>
 

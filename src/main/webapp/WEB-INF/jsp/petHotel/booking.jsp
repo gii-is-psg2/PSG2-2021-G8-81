@@ -20,6 +20,7 @@
     <jsp:body>
         <h2>
 
+
            Nueva reserva en el hotel
         </h2>
   <form:form modelAttribute="petHotel" class="form-horizontal" id="add-petHotel-form">
@@ -40,7 +41,10 @@
                  
 		 <petclinic:inputField label="Datos de inter�s" name="description" />
 
+
 </div>
+
+
         <sec:authorize access="hasAuthority('owner')">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

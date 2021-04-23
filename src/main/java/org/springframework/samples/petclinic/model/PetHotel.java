@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "pet_hotel")
 public class PetHotel extends BaseEntity{
+
 
 @NotNull
 @Column(name = "dateEntry")        
@@ -49,28 +49,34 @@ public void setDescription(String description) {
 	this.description = description;
 }
 
-public LocalDate getDateEntry() {
-	return dateEntry;
-}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-public void setDateEntry(LocalDate dateEntry) {
-	this.dateEntry = dateEntry;
-}
+	public LocalDate getDateEntry() {
+		return dateEntry;
+	}
 
-public LocalDate getDateExit() {
-	return dateExit;
-}
+	public void setDateEntry(LocalDate dateEntry) {
+		this.dateEntry = dateEntry;
+	}
 
-public void setDateExit(LocalDate dateExit) {
-	this.dateExit = dateExit;
-}
+	public LocalDate getDateExit() {
+		return dateExit;
+	}
 
-public Pet getPet() {
-	return pet;
-}
 
-public void setPet(Pet pet) {
-	this.pet = pet;
-}
+	public void setDateExit(LocalDate dateExit) {
+		this.dateExit = dateExit;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
 
 }

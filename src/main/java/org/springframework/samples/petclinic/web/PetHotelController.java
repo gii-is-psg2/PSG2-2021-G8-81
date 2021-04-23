@@ -10,12 +10,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
+
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetHotel;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PetHotelService;
 import org.springframework.samples.petclinic.service.PetService;
+import org.springframework.samples.petclinic.service.exceptions.TwoPetsBookingException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -83,9 +85,17 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 		modelMap.put("petHotel", petHotel);
 		return "petHotel/booking";
 	}
-	Pet pet = petService.findPetById(petHotel.getPet().getId());
-	petHotel.setPet(pet);
-	this.petHotelService.saveCita(petHotel);
+	else {
+		try {
+			Pet pet = petService.findPetById(petHotel.getPet().getId());
+			petHotel.setPet(pet);
+			this.petHotelService.saveCita(petHotel);
+		}
+	catch(TwoPetsBookingException ex) {
+		 result.rejectValue("pet", "no puede solicitar otra estancia para esta mascota", "no puede solicitar otra estancia para esta mascota");
+		 return "petHotel/booking";
+	}
+	}
 	return "redirect:/petsHotel";
 }
 }
