@@ -32,7 +32,7 @@ public class PetHotel extends BaseEntity{
 	private Pet pet;
 
 
-	@Column(name = "description")
+	@Column(name = "data")
 	private String description;
 
 	public PetHotel() {
