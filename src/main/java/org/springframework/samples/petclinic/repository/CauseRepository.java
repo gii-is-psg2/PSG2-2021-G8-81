@@ -38,6 +38,8 @@ public interface CauseRepository extends CrudRepository<Cause, Integer> {
 
 
 	Collection<Cause> findAll() throws DataAccessException;
+	
+	Cause findById(int id) throws DataAccessException;
 
 	
 

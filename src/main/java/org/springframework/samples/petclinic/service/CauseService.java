@@ -52,11 +52,11 @@ public class CauseService {
 		this.causeRepository = causeRepository;
 	}	
 
-//	@Transactional(readOnly = true)
-//	public Owner findOwnerById(int id) throws DataAccessException {
-//		return ownerRepository.findById(id);
-//	}
-//	
+	@Transactional(readOnly = true)
+	public Cause findCauseById(int id) throws DataAccessException {
+		return causeRepository.findById(id);
+	}
+
 	@Transactional(readOnly = true)	
 	public Collection<Cause> findCauses() throws DataAccessException {
 		return causeRepository.findAll();

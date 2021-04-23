@@ -16,16 +16,14 @@
             <th>Suma donaciones</th>
             <th>Total</th>
             <th>Organización</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${causes}" var="cause">
             <tr>
                 <td>
-                    <spring:url value="/causes/{causeId}" var="causeUrl">
-                        <spring:param name="causeId" value="${cause.id}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(causeUrl)}"><c:out value="${cause.name}"/></a>
+                   	<c:out value="${cause.name}"/></a>
                 </td>
                 <td>
                     <c:out value="${cause.description} "/>
@@ -38,6 +36,11 @@
                 </td>
                 <td>
                     <c:out value="${cause.organization} "/>
+                </td>
+                <td>
+                	<spring:url value="/causes/{causeId}" var="causeUrl">
+                	<spring:param name="causeId" value="${cause.id}" />
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Details</a>
                 </td>
 					<%-- <td>
 					<spring:url value="/vets/{vetId}/edit" var="vetUrl">

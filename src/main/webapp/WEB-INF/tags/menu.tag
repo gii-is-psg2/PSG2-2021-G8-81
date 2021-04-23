@@ -49,7 +49,7 @@
 				
 				<petclinic:menuItem active="${name eq 'cause'}" url="/causes"
 					title="trigger a RuntimeException to see how it is handled">
-					<span>Cause</span>
+					<span>Causes</span>
 				</petclinic:menuItem>
 
 			</ul>
