@@ -71,6 +71,7 @@ public class VetController {
 		model.put("vets", vets);
 		return "vets/vetList";
 	}
+	
 
 	@GetMapping(value = { "/vets.xml"})
 	public @ResponseBody Vets showResourcesVetList() {

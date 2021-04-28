@@ -46,6 +46,11 @@
 					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
 					<span><fmt:message key="error"/></span>
 				</petclinic:menuItem>
+					<petclinic:menuItem active="${name eq 'Adoptions'}" url="/adoptions"
+					title="adoptions">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span>Adoptions</span>
+				</petclinic:menuItem>
 
 			</ul>
 

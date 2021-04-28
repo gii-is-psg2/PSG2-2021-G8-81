@@ -24,8 +24,8 @@ private LocalDate dateEntry;
 private LocalDate dateExit;
 
 
-@Column(name = "data")
-private String data;
+@Column(name = "description")
+private String description;
 
 public LocalDate getDateEntry() {
 	return dateEntry;
@@ -43,12 +43,12 @@ public void setDateExit(LocalDate dateExit) {
 	this.dateExit = dateExit;
 }
 
-public String getData() {
-	return data;
+public String getDescription() {
+	return description;
 }
 
-public void setData(String data) {
-	this.data = data;
+public void setDescription(String description) {
+	this.description = description;
 }
 
 }
