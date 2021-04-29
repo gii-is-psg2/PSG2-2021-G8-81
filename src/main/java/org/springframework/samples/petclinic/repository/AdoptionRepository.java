@@ -20,7 +20,4 @@ public interface AdoptionRepository extends CrudRepository<Adoption, Integer>{
 	@Query("SELECT adop FROM Adoption adop where adop.pet.id=:petId")
 	public List<Adoption> findPetById(int petId) throws DataAccessException;
 
-
-	@Query("SELECT adop FROM Adoption adop where adop.newOwner=:NULL")
-	public List<Adoption> findAllAvailable() throws DataAccessException;
 }

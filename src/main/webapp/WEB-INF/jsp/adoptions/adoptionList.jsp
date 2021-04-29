@@ -20,10 +20,10 @@
         	</thead>
         	
         <tbody>
-       		<c:forEach items="${adoptions}" var="adoption">
+       		<c:forEach items="${pets}" var="adoption">
        		<tr>
-       			<td><c:out value="${adoption.pet}"></c:out>
-       			<td><c:out value="${adoption.pet.owner.firstName} ${adoption.pet.owner.lastName}"></c:out>
+       			<td><c:out value="${pet}"></c:out>
+       			<td><c:out value="${pet.owner.firstName} ${ pet.owner.lastName}"></c:out>
        			<td>
        		</tr>
        		</c:forEach>

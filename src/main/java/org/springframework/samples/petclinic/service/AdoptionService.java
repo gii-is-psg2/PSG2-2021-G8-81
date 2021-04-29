@@ -74,6 +74,7 @@ public class AdoptionService {
 		}
 	}
 	public Collection<Adoption> findAllAdoptionsAvaileble() {
-		return adoptionRepository.findAllAvailable();
+		return adoptionRepository.findAll();
+		
 	}
 }
