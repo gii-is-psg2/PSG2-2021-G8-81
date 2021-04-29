@@ -42,7 +42,7 @@ public class AdoptionController {
 
 	@GetMapping(value = { "/adoptions" })
 	public String showAdoptions(Map<String, Object> model) {
-		Collection<Adoption> adop = adoptionService.findAllAdoptions();
+		Collection<Adoption> adop = adoptionService.findAllAdoptionsAvaileble();
 		model.put("adoptions", adop);
 		return "adoptions/adoptionList";
 	}

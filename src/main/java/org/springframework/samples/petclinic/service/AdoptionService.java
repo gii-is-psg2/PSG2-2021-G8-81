@@ -74,7 +74,6 @@ public class AdoptionService {
 		}
 	}
 	public Collection<Adoption> findAllAdoptionsAvaileble() {
-		// TODO Auto-generated method stub
 		return adoptionRepository.findAllAvailable();
 	}
 }
