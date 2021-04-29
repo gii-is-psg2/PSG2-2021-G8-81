@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -13,13 +11,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "adoptions")
 public class Adoption extends BaseEntity{
 
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name="pet_id")
 	private Pet pet;
 	
 	
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name="owner_id")
 	private Owner previousOwner;

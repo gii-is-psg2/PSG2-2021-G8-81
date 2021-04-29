@@ -51,13 +51,17 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Adoptions</span>
 
-				
+					</petclinic:menuItem>
 				<petclinic:menuItem active="${name eq 'cause'}" url="/causes"
 					title="trigger a RuntimeException to see how it is handled">
 					<span>Causes</span>
 
 				</petclinic:menuItem>
-
+					<petclinic:menuItem active="${name eq 'Adoptions'}" url="/adop"
+					title="adoptions">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span>Give adoption</span>
+				</petclinic:menuItem>
 			</ul>
 
 

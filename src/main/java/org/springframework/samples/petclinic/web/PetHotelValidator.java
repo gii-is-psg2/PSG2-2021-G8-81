@@ -22,19 +22,18 @@ public class PetHotelValidator implements Validator{
 		if (dateEntry==null) {
 			errors.rejectValue("dateEntry", " No puede dejar el campo vacio",
 					"No puede dejar el campo vacio");
-ectValue("dateEntry", REQUIRED, REQUIRED);
 
 		}
-		else if (pet.getDateEntry().isBefore(LocalDate.now())) {
+		else if (petHotel.getDateEntry().isBefore(LocalDate.now())) {
 			errors.rejectValue("dateEntry", " debe ser posterior a hoy",
 					" debe ser posterior a hoy");}
-		else if (pet.getDateExit()== null) {
+		else if (petHotel.getDateExit()== null) {
 			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
 			}
-		if (pet.getDateEntry()!=null && pet.getDateExit()!=null && pet.getDateExit().isBefore(pet.getDateEntry())) {
+		if (petHotel.getDateEntry()!=null && petHotel.getDateExit()!=null && petHotel.getDateExit().isBefore(petHotel.getDateEntry())) {
 			errors.rejectValue("dateExit", " debe ser posterior a la fecha de entrada",
 					" debe ser posterior a la fecha de entrada");}
-		if (pet.getDateExit()== null) {
+		if (petHotel.getDateExit()== null) {
 			errors.rejectValue("dateExit", REQUIRED, REQUIRED);
 		}
 		

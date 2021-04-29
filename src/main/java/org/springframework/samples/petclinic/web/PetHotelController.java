@@ -87,7 +87,7 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 			this.petHotelService.saveCita(petHotel);
 		}
 	catch(TwoPetsBookingException ex) {
-		 result.rejectValue("pet", "no puede solicitar otra estancia para esta mascota", "no puede solicitar otra estancia para esta mascota");
+		 result.rejectValue("description", "no puede solicitar otra estancia para esta mascota", "no puede solicitar otra estancia para esta mascota");
 		 return "petHotel/booking";
 	}
 	}
