@@ -13,10 +13,17 @@ public class PetHotelValidator implements Validator{
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-		PetHotel pet = (PetHotel) obj;
 
-		if (pet.getDateEntry() == null) {
-			errors.rejectValue("dateEntry", REQUIRED, REQUIRED);
+		
+		PetHotel petHotel = (PetHotel) obj;
+		LocalDate dateEntry = petHotel.getDateEntry();
+		LocalDate dateExit = petHotel.getDateExit();
+		String data = petHotel.getDescription();
+		if (dateEntry==null) {
+			errors.rejectValue("dateEntry", " No puede dejar el campo vacio",
+					"No puede dejar el campo vacio");
+ectValue("dateEntry", REQUIRED, REQUIRED);
+
 		}
 		else if (pet.getDateEntry().isBefore(LocalDate.now())) {
 			errors.rejectValue("dateEntry", " debe ser posterior a hoy",

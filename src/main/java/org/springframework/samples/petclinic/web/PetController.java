@@ -31,6 +31,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.Collection;
+
+import java.util.Map;
+
+import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.BeanUtils;
@@ -59,6 +64,7 @@ public class PetController {
 		this.petService = petService;
                 this.ownerService = ownerService;
 	}
+
 
 	@ModelAttribute("types")
 	public Collection<PetType> populatePetTypes() {
@@ -97,6 +103,7 @@ public class PetController {
 		model.put("pet", pet);
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
+
 
 	@PostMapping(value = "/pets/new")
 	public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model) {		
@@ -162,5 +169,6 @@ public class PetController {
         	
         	return "redirect:/owners/{ownerId}";
         }
+       
 
 }
