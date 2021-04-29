@@ -6,14 +6,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <petclinic:layout pageName="adoptions">
-	<h2>Adoptions</h2>
+	<h2>Adoptions for <c:out value="${adoption.pet.name}"/> </h2>
 
 
 	<table id ="adoptionTable"class="table table-striped"> 
 		<thead>
         	<tr>
-        	<th>Pet</th>
-            <th>Previous Owner</th>
+        	<th>New Owner</th>
+            <th>Description</th>
+             <th>Conceder adopción</th>
           	
            
         	</tr>
@@ -22,9 +23,9 @@
         <tbody>
        		<c:forEach items="${adoptions}" var="adoption">
        		<tr>
-       			<td><c:out value="${adoption.pet}"></c:out>
-       			<td><c:out value="${adoption.pet.owner.firstName} ${adoption.pet.owner.lastName}"></c:out>
-       			<td>
+       			<td><c:out value="${adoption.newOwner.firstName} ${adoption.newOwner.lastName}"></c:out>
+       			<td><c:out value="${adoption.description}"></c:out>
+       			<td><spring:url value="/adoption/{adoptionId}" var="adoptionUrl"><spring:param name="adoptionId" value="${adoption.id}"/></spring:url><a href="${fn:escapeXml(adoptionUrl)}"><fmt:message key="adoption"/></a>
        		</tr>
        		</c:forEach>
         </tbody>

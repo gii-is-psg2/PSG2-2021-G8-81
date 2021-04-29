@@ -80,4 +80,12 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (2, 8, '2013-01-02',
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04', 'spayed');
 
-INSERT INTO pet_hotel(id,date_entry,date_exit,description) VALUES (1,'2010-09-07','2010-10-07','')
+INSERT INTO pet_hotel(id,date_entry,date_exit,description) VALUES (1,'2010-09-07','2010-10-07','');
+
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (1,1,1,null,'');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (2,1,1,2,'Me gustan los ornitorrincos');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (3,1,1,3,'Me gustan los ornitorrincos');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (4,1,1,4,'Me gustan los ornitorrincos');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (5,1,1,5,'Me gustan los ornitorrincos');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (6,1,1,6,'Me gustan los ornitorrincos');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (7,1,1,7,'Me gustan los ornitorrincos')

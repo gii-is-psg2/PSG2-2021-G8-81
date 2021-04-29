@@ -15,12 +15,14 @@ import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.service.AdoptionService;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PetService;
+import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -44,7 +46,13 @@ public class AdoptionController {
 		model.put("adoptions", adop);
 		return "adoptions/adoptionList";
 	}
-	
+	@GetMapping(value= {"/applyAdoption"})
+	public String applyAdoption(Map<String,Object> model) {
+		
+		
+		
+		return "adoptions/adoptionList";
+	}
 	@GetMapping(value = "/adop")
 	public String initCreationForm(Map<String,Object> model) {
 		Adoption adoption = new Adoption();
@@ -79,5 +87,19 @@ public class AdoptionController {
 		}
 		return "redirect:/adoptions";
 		
+	}
+	@GetMapping(value = { "/adoptionAplied/{petId}" })
+	public String showAdoptionAplied(Map<String, Object> model,@PathVariable("petId") int id) {
+		Collection<Adoption> adop = adoptionService.findAdoptionsByPet(id);
+		model.put("adoptions", adop);
+		return "adoptions/adoptionListMine";
+	}
+	@GetMapping(value = { "/adoption/{adoptionId}" })
+	public String setAdoptionAplied(Map<String, Object> model,@PathVariable("adoptionId") int id) throws DataAccessException, DuplicatedPetNameException {
+		Pet pet= petService.findPetById(adoptionService.findAdoptionsByID(id).getPet().getId());
+		pet.setOwner(adoptionService.findAdoptionsByID(id).getNewOwner());
+		adoptionService.deleteAdoptionByPet(pet.getId());
+		petService.savePet(pet);
+		return "redirect:/adoptions";
 	}
 }
