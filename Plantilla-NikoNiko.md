@@ -25,7 +25,7 @@ In the retrospective meeting, the team has a discussion about those results.
 | ------------- | ------------- |
 | Day 1         |    :smiley: (Meaning that I am learning, I like the work and I think I can do it without problems, but with some effort) |
 | Day 2         |    - (Meaning that I did no work regarding the PSG2 project)           |
-| Day 3         |    :neutral_face:  (Meaning that I feel I had to struggle, but the assigned work was fair and the day productive)          |:fearful:
+| Day 3         |    :neutral_face:  (Meaning that I feel I had to struggle, but the assigned work was fair and the day productive)          |
 | Day 4         |    :worried: (Meaning that I feel I have serious difficulties to accomplish the task, or the productivity of my day was awful)           |
 | Day 5         |    :fearful:   (I´m desperate, I need help)        |
 
@@ -34,8 +34,8 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         | :smile:       |               |                |                |                |
-| Day 2         | :neutral_face:|    :smile:    |                |                |                |
-| Day 3         |    :smiley:   |    :worried:  |                |                |                |
-| Day 4         |               |               |                |                |                |
+| Day 1         | :smile:       |               |                | :worried:      |     :worried:  |
+| Day 2         | :neutral_face:|    :smile:    |                |                | :worried:      |
+| Day 3         |    :smiley:   |    :worried:  |                |                | :neutral_face: |
+| Day 4         |:neutral_face: |               |                |                |                |
 ...
