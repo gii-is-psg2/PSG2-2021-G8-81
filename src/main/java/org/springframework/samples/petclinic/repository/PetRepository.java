@@ -67,9 +67,6 @@ public interface PetRepository extends Repository<Pet, Integer> {
 
 	@Query("SELECT p FROM Pet p WHERE p.owner.id = : ownerId")
 	Collection<Pet> findByOwner(@Param("clienteId")Integer ownerId);
-
-	@Query("SELECT p FROM Pet p WHERE p.adopt =: true")
-	Collection<Pet> findPetsAdoptable();
 	
 	Collection<Pet> findAll()throws DataAccessException;
 

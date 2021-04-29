@@ -42,34 +42,59 @@ public class AdoptionController {
 
 	@GetMapping(value = { "/adoptions" })
 	public String showAdoptions(Map<String, Object> model) {
-		Collection<Pet> adop = petService.findPestAdoptable();
-		model.put("adoptions", adop);
+		Collection<Pet> pets = petService.findPestAdoptable();
+		model.put("pets", pets);
 		return "adoptions/adoptionList";
 	}
-	@GetMapping(value= {"/applyAdoption"})
-	public String applyAdoption(Map<String,Object> model) {
+	@GetMapping(value= {"/applyAdoption/{adoptId}"})
+	public String applyAdoption(Map<String,Object> model,@PathVariable("adoptId") int id) {
+		Pet pet=petService.findPetById(id);
+		Adoption adp= new Adoption();
+		adp.setPet(pet);
+		adp.setPreviousOwner(pet.getOwner());
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    String user = clienteDetails.getUsername();
+	    Owner ow = ownerService.findOwnerByUsername(user);
+		adp.setNewOwner(ow);
+		model.put("adoption", adp);
+		return "adoptions/applyAdoption";
+	}
+	@PostMapping(value = "/applyAdoption/{adoptId}")
+	public String sendAppliedAdoption(@Valid Adoption adoption, Map<String,Object> model,BindingResult result,@PathVariable("adoptId") int id) {
+
+		if(result.hasErrors()) {
+			model.put("adoption", adoption);
+			return "adoptions/newAdoption";
+			
+		}
+		else {
+			Pet pet = petService.findPetById(id);
+			adoption.setPet(pet);
+			Owner owner = pet.getOwner();
+			adoption.setPreviousOwner(owner);
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		    String user = clienteDetails.getUsername();
+		    Owner ow = ownerService.findOwnerByUsername(user);
+		    adoption.setNewOwner(ow);
+
+			this.adoptionService.createAdoption(adoption);
+			return "redirect:/adoptions";
+		}
 		
-		
-		
-		return "adoptions/adoptionList";
 	}
 	@GetMapping(value = "/adop")
 	public String initCreationForm(Map<String,Object> model) {
-		Adoption adoption = new Adoption();
-		Owner owner = new Owner();
 		Pet pet = new Pet();
-	    adoption.setPet(pet);
-	    adoption.setPreviousOwner(owner);
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	    String user = clienteDetails.getUsername();
 	    List<Pet> list = ownerService.findOwnerByUsername(user).getPets();
 		model.put("pet", list);
-		model.put("adoption", adoption);
+		model.put("adoption", pet);
 		return "adoptions/newAdoption";
 		
 	}
 	@PostMapping(value = "/adop")
-	public String proccesCreationForm(ModelMap model, @Valid Adoption adoption, BindingResult result) throws DataAccessException {
+	public String proccesCreationForm(ModelMap model, @Valid Adoption adoption, BindingResult result) throws DataAccessException, DuplicatedPetNameException {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	    String user = clienteDetails.getUsername();
 	    List<Pet> list = ownerService.findOwnerByUsername(user).getPets();
@@ -80,15 +105,13 @@ public class AdoptionController {
 			
 		}else {
 			Pet pet = petService.findPetById(adoption.getPet().getId());
-			adoption.setPet(pet);
-			Owner owner = ownerService.findOwnerById(adoption.getPreviousOwner().getId());
-			adoption.setPreviousOwner(owner);
-			this.adoptionService.createAdoption(adoption);
-		}
+			pet.setAdopt(true);
+			this.petService.savePet(pet);
+			}
 		return "redirect:/adoptions";
 		
 	}
-	@GetMapping(value = { "/adoptionAplied/{petId}" })
+	@GetMapping(value = { "/adoptionApplied/{petId}" })
 	public String showAdoptionAplied(Map<String, Object> model,@PathVariable("petId") int id) {
 		Collection<Adoption> adop = adoptionService.findAdoptionsByPet(id);
 		model.put("adoptions", adop);
@@ -99,6 +122,7 @@ public class AdoptionController {
 		Pet pet= petService.findPetById(adoptionService.findAdoptionsByID(id).getPet().getId());
 		pet.setOwner(adoptionService.findAdoptionsByID(id).getNewOwner());
 		adoptionService.deleteAdoptionByPet(pet.getId());
+		pet.setAdopt(false);
 		petService.savePet(pet);
 		return "redirect:/adoptions";
 	}

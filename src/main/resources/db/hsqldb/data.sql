@@ -64,26 +64,26 @@ INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Mad
 INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487', 'owner10');
 
 
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (1, 'Leo', '2010-09-07', 1, 1,true);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (2, 'Basil', '2012-08-06', 6, 2,true);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (3, 'Rosy', '2011-04-17', 2, 3,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (4, 'Jewel', '2010-03-07', 2, 3,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (5, 'Iggy', '2010-11-30', 3, 4,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (6, 'George', '2010-01-20', 4, 5,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (7, 'Samantha', '2012-09-04', 1, 6,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (8, 'Max', '2012-09-04', 1, 6,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (9, 'Lucky', '2011-08-06', 5, 7,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (10, 'Mulligan', '2007-02-24', 2, 8,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (11, 'Freddy', '2010-03-09', 5, 9,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (12, 'Lucky', '2010-06-24', 2, 10,false);
-INSERT INTO pets(id,name,birth_date,type_id,owner_id,adopt) VALUES (13, 'Sly', '2012-06-08', 1, 10,false);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (1, 'Leo', '2010-09-07', 1, 1, TRUE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (2, 'Basil', '2012-08-06', 6, 2, TRUE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (3, 'Rosy', '2011-04-17', 2, 3, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (4, 'Jewel', '2010-03-07', 2, 3, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (5, 'Iggy', '2010-11-30', 3, 4, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (6, 'George', '2010-01-20', 4, 5, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (7, 'Samantha', '2012-09-04', 1, 6, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (8, 'Max', '2012-09-04', 1, 6, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (9, 'Lucky', '2011-08-06', 5, 7, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (10, 'Mulligan', '2007-02-24', 2, 8, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (11, 'Freddy', '2010-03-09', 5, 9, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (12, 'Lucky', '2010-06-24', 2, 10, FALSE);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id, adopt) VALUES (13, 'Sly', '2012-06-08', 1, 10, FALSE);
 
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (1, 7, '2013-01-01', 'rabies shot');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04', 'spayed');
 
-INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (1,1,1,NULL,'');
+INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (1,1,1,2,'Soy Batman');
 INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (2,1,1,2,'Me gustan los ornitorrincos');
 INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (3,1,1,3,'Me gustan los ornitorrincos');
 INSERT INTO adoptions (id,pet_id,owner_id,new_owner_id,description) VALUES (4,1,1,4,'Me gustan los ornitorrincos');

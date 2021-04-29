@@ -14,16 +14,21 @@
         	<tr>
         	<th>Pet</th>
             <th>Previous Owner</th>
-          	
+          	<th>Apply adoptionr</th>
            
         	</tr>
         	</thead>
         	
         <tbody>
-       		<c:forEach items="${pets}" var="adoption">
+       		<c:forEach items="${pets}" var="pet">
        		<tr>
-       			<td><c:out value="${pet}"></c:out>
+       			<td><c:out value="${pet.name}"></c:out>
        			<td><c:out value="${pet.owner.firstName} ${ pet.owner.lastName}"></c:out>
+       			 <td>
+                	<spring:url value="/applyAdoption/{adoptId}" var="adoptUrl">
+                	<spring:param name="adoptId" value="${pet.id}" />
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(adoptUrl)}">Adopt</a>
+                </td>
        			<td>
        		</tr>
        		</c:forEach>

@@ -11,13 +11,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "adoptions")
 public class Adoption extends BaseEntity{
 
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name="pet_id")
 	private Pet pet;
 	
 	
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name="owner_id")
 	private Owner previousOwner;

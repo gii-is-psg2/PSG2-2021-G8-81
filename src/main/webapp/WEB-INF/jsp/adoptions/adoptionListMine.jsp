@@ -25,7 +25,7 @@
        		<tr>
        			<td><c:out value="${adoption.newOwner.firstName} ${adoption.newOwner.lastName}"></c:out>
        			<td><c:out value="${adoption.description}"></c:out>
-       			<td><spring:url value="/adoption/{adoptionId}" var="adoptionUrl"><spring:param name="adoptionId" value="${adoption.id}"/></spring:url><a href="${fn:escapeXml(adoptionUrl)}"><fmt:message key="adoption"/></a>
+       			<td><spring:url value="/adoption/{adoptionId}" var="adoptionUrl"><spring:param name="adoptionId" value="${adoption.id}"/></spring:url><a href="${fn:escapeXml(adoptionUrl)}">Conceder adopción</a>
        		</tr>
        		</c:forEach>
         </tbody>
