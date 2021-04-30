@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "donation")
-public class Donation extends NamedEntity{
+public class Donation extends BaseEntity{
 
 @Column(name = "money")
 private Integer money;

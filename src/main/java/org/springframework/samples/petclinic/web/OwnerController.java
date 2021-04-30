@@ -24,11 +24,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PetService;
-import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,12 +56,6 @@ public class OwnerController {
 		this.petService= petService;
 	}
 
-//	@GetMapping(value = { "/adoptions" })
-//	public String showPetsList(Map<String, Object> model) {
-//		Collection<Pet> pets = this.petService.findAllPets();
-//		model.put("adoptions", pets);
-//		return "adoptions/adoptionList";
-//	}
 	
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {

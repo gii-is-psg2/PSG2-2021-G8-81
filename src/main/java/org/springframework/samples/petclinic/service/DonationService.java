@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class DonationService {
 	
-	private CauseService causeService;
 	private DonationRepository donationRepository;
-	
+	private CauseService causeService;
 	@Autowired
-	public DonationService(DonationRepository donationRepository) {
+	public DonationService(DonationRepository donationRepository, CauseService causeService) {
 		this.donationRepository= donationRepository;
+		this.causeService= causeService;
 	}
 	@Transactional(readOnly= true)
 	public Collection<Donation> findAllDonations(){
@@ -29,9 +29,12 @@ public class DonationService {
 	@Transactional
 	public void save(Donation donation)throws DataAccessException, TooMuchMoneyException{
 		Cause cause = causeService.findCauseById(donation.getCause().getId());
-		if (cause.getTotalBudget()-cause.getBudget()<donation.getMoney()) {
+		Integer money = donation.getMoney();
+		if (money>cause.getBudget()-cause.getTotalBudget()) {
 			throw new TooMuchMoneyException();
 		}
+		cause.setTotalBudget(money+cause.getTotalBudget());
+		causeService.saveCause(cause);
 		donation.setDate(LocalDateTime.now());
 		donationRepository.save(donation);		
 	}

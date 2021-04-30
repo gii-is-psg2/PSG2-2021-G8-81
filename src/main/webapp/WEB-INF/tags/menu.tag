@@ -62,6 +62,12 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Give adoption</span>
 				</petclinic:menuItem>
+					
+				<petclinic:menuItem active="${name eq 'donation'}" url="/donation"
+					title="trigger a RuntimeException to see how it is handled">
+					<span>Donation</span>
+
+				</petclinic:menuItem>
 			</ul>
 
 

@@ -13,7 +13,8 @@
         </h2>
   <form:form modelAttribute="donation" class="form-horizontal" id="add-donation-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="Cantidad a donar" name="money" />
+        <fmt:message var="money" key="money"/>
+           <petclinic:inputField label="${money}" name="money"/>
  <div class="control-group">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><c:out value="Escoja una causa benéfica"/></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <select name="cause.id" id="cause.id"> 
@@ -30,7 +31,7 @@
         <sec:authorize access="hasAuthority('owner')">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" type="submit"><fmt:message key="donate"/></button>    
+                        <button class="btn btn-default" type="submit">Donar</button>    
             </div>
         </div>
         </sec:authorize>
