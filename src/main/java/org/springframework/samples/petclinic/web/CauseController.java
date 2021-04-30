@@ -27,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Juergen Hoeller
@@ -80,7 +81,12 @@ public class CauseController {
 		}
 		
 	}
-
+	@GetMapping("/causes/{causeId}")
+	public ModelAndView showOwner(@PathVariable("causeId") int causeId) {
+		ModelAndView mav = new ModelAndView("cause/causeDetails");
+		mav.addObject(this.causeService.findCauseById(causeId));
+		return mav;
+	}
 	
 //	@GetMapping(value = "/owners/{ownerId}/edit")
 //	public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
