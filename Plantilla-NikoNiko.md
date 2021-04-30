@@ -34,8 +34,10 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         | :smile:       |               | :neutral_face: | :worried:      |     :worried:  |
-| Day 2         | :neutral_face:|    :smile:    | :smiley:       |                | :worried:      |
-| Day 3         |    :smiley:   |    :worried:  | :neutral_face: |                | :neutral_face: |
-| Day 4         |:neutral_face: |               |                |                |                |
-...
+| Day 1         | :smile:       |    :smile:    |  :smile:       | :worried:      |     :worried:  |
+| Day 2         | :neutral_face:|    :worried:  | :worried:      | :worried:      | :neutral_face: |
+| Day 3         |    :smiley:   |               |  :neutral_face:|                |                |
+| Day 5         |:neutral_face: |               |                |                |                |
+| Day 6         |               |               |                |                |                |
+| Day 7         |               |               |                |                |                |
+| Day 8         |               |               |                |                |                |
