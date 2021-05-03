@@ -18,18 +18,31 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <h2>
-            <c:if test="${pet['new']}"> </c:if> <fmt:message key="booking"/>
+<h2>
+
+           Nueva reserva en el hotel
         </h2>
   <form:form modelAttribute="petHotel" class="form-horizontal" id="add-petHotel-form">
         <div class="form-group has-feedback">
-        	<fmt:message var="adate" key="adate"/>
-        	<fmt:message var="ddate" key="ddate"/>
-            <petclinic:inputField label="${adate}" name="dateEntry" />
-            <petclinic:inputField label="${ddate}" name="dateExit" />
-           <label for="vehiculo"><fmt:message key="btext"/></label>
-		<petclinic:inputField label="" name="dateExit" />
-</div>
+            <petclinic:inputField label="Fecha de entrada" name="dateEntry" />
+            <petclinic:inputField label="Dia de salida" name="dateExit" />
+ <div class="control-group">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><c:out value="Escoja una mascota"/></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <select name="pet.id" id="pet.id"> 
+  		<c:forEach items="${pet}" var="pet">
+  		<option  value="${pet.id}" ><c:out value="${pet.name}" /></option> 
+    </c:forEach>
+  </select> 
+  <br>
+       
+                </div>	
+
+                </div>	
+
+                 <br>
+                 
+		 <petclinic:inputField label="Datos de inter�s" name="description" />
+
         <sec:authorize access="hasAuthority('owner')">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

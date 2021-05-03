@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -32,15 +31,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		String owner="owner";
+		String admin="admin";
 		http.authorizeRequests()
 				.antMatchers("/resources/**","/webjars/**","/h2-console/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/","/oups").permitAll()
 				.antMatchers("/users/new").permitAll()
-				.antMatchers("/admin/**").hasAnyAuthority("admin")
-				.antMatchers("/owners/**").hasAnyAuthority("owner","admin")				
+				.antMatchers("/admin/**").hasAnyAuthority(admin)
+				.antMatchers("/owners/**").hasAnyAuthority(owner,admin)				
 				.antMatchers("/vets/**").authenticated()
-				.antMatchers("/petsHotel").hasAnyAuthority("admin","owner")
-				.antMatchers("/petHotel/new").hasAnyAuthority("owner")
+				.antMatchers("/petsHotel").hasAnyAuthority(admin,owner)
+				.antMatchers("/petHotel/new").hasAnyAuthority(owner)
+				.antMatchers("/adoptions/**").hasAnyAuthority(owner,admin)
+				.antMatchers("/adop").hasAnyAuthority(owner,admin)
+				.antMatchers("/adoption/**").hasAnyAuthority(owner,admin)
+				.antMatchers("/adoptionApplied/**").hasAnyAuthority(owner,admin)
+				.antMatchers("/applyAdoption/**").hasAnyAuthority(owner,admin)
 				.antMatchers("/causes/**").permitAll()
 				.antMatchers("/donation/**").permitAll()
 				.anyRequest().denyAll()

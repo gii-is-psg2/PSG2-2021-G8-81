@@ -15,28 +15,15 @@
  */
 package org.springframework.samples.petclinic.web;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
-import org.springframework.samples.petclinic.model.Donation;
-import org.springframework.samples.petclinic.model.Owner;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Vets;
-import org.springframework.samples.petclinic.repository.PetRepository;
-import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.CauseService;
-import org.springframework.samples.petclinic.service.OwnerService;
-import org.springframework.samples.petclinic.service.PetService;
-import org.springframework.samples.petclinic.service.VetService;
-import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -94,7 +81,12 @@ public class CauseController {
 		}
 		
 	}
-
+	@GetMapping("/causes/{causeId}")
+	public ModelAndView showOwner(@PathVariable("causeId") int causeId) {
+		ModelAndView mav = new ModelAndView("cause/causeDetails");
+		mav.addObject(this.causeService.findCauseById(causeId));
+		return mav;
+	}
 	
 //	@GetMapping(value = "/owners/{ownerId}/edit")
 //	public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
