@@ -7,20 +7,21 @@
 <petclinic:layout pageName="petsHotel">
     <h2><fmt:message key="photel"/></h2>
 
-    <table id="tablePetsHotel" class="table table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;"><fmt:message key="adate"/></th>
-                <th style="width: 100px;"><fmt:message key="ddate"/></th>
-                <th style="width: 100px;"><fmt:message key="datum"/></th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${petsHotel}" var="petHotel">
-                <tr>
-                    <td><c:out value="${petHotel.dateEntry}" />
-                    <td><c:out value="${petHotel.dateExit}" />
-                    <td><c:out value="${petHotel.description}" />
+	<table id="tablePetsHotel" class="table table-striped">
+		<thead>
+			<tr>
+				<th style="width: 100px;"><fmt:message key="adate"/></th>
+				<th style="width: 100px;"><fmt:message key="ddate"/></th>
+				<th style="width: 100px;"><fmt:message key="datum"/></th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${petsHotel}" var="petHotel">
+				<tr>
+					<td><c:out value="${petHotel.pet.name}" />
+					<td><c:out value="${petHotel.dateEntry}" />
+					<td><c:out value="${petHotel.dateExit}" />
+					<td><c:out value="${petHotel.data}" />
 
                 </tr>
             </c:forEach>
