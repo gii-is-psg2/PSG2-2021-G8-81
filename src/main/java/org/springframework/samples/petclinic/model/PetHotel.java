@@ -32,9 +32,10 @@ public class PetHotel extends BaseEntity{
 	private Pet pet;
 
 
-	@Column(name = "description")
-	private String description;
 
+@Column(name = "description")
+private String description;
+  
 	public PetHotel() {
 		this.dateEntry = LocalDate.now();
 		this.dateExit =dateEntry.plusDays(1);
@@ -42,6 +43,7 @@ public class PetHotel extends BaseEntity{
 	public String getDescription() {
 		return description;
 	}
+
 
 	public void setDescription(String description) {
 		this.description = description;
@@ -59,6 +61,7 @@ public class PetHotel extends BaseEntity{
 		return dateExit;
 	}
 
+
 	public void setDateExit(LocalDate dateExit) {
 		this.dateExit = dateExit;
 	}
@@ -70,5 +73,6 @@ public class PetHotel extends BaseEntity{
 	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
+
 
 }

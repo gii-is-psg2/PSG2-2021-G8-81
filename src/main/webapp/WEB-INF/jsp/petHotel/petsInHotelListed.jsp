@@ -5,7 +5,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="petsHotel">
-	<h2><fmt:message key="photel"/></h2>
+    <h2><fmt:message key="photel"/></h2>
 
 	<table id="tablePetsHotel" class="table table-striped">
 		<thead>
@@ -23,12 +23,12 @@
 					<td><c:out value="${petHotel.dateExit}" />
 					<td><c:out value="${petHotel.data}" />
 
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 <a class="btn btn-default" href='<spring:url value="/petHotel/new" htmlEscape="true"/>'><fmt:message key="request"/></a>
-	
-	<br />
+
+    <br />
 
 </petclinic:layout>

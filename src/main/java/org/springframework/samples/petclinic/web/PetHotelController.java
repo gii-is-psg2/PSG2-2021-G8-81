@@ -85,13 +85,15 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 		try {
 			petHotel.setPet(pet);
 			this.petHotelService.saveCita(petHotel);
+			return "redirect:/petsHotel";
 		}
 	catch(TwoPetsBookingException ex) {
 			
-		 result.rejectValue("pet", "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit(), "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit());
+		 result.rejectValue("dateEntry", "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit(), "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit());
+
 		 return "petHotel/booking";
 	}
 	}
-	return "redirect:/petsHotel";
+	
 }
 }

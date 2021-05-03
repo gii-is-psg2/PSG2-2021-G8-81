@@ -36,6 +36,9 @@
   <br>
        
                 </div>	
+
+                </div>	
+
                  <br>
                  
 		 <petclinic:inputField label="Datos de inter�s" name="description" />
