@@ -18,6 +18,7 @@
 		<tbody>
 			<c:forEach items="${petsHotel}" var="petHotel">
 				<tr>
+					<td><c:out value="${petHotel.pet.name}" />
 					<td><c:out value="${petHotel.dateEntry}" />
 					<td><c:out value="${petHotel.dateExit}" />
 					<td><c:out value="${petHotel.data}" />

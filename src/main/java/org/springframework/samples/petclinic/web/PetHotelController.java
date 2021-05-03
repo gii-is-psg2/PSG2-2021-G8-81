@@ -76,18 +76,19 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 	String user = clienteDetails.getUsername();
 	List<Pet> list = ownerService.findOwnerByUsername(user).getPets();
 	modelMap.put("pet", list);
+	Pet pet = petService.findPetById(petHotel.getPet().getId());
 	if(result.hasErrors()) {
 		modelMap.put("petHotel", petHotel);
 		return "petHotel/booking";
 	}
 	else {
 		try {
-			Pet pet = petService.findPetById(petHotel.getPet().getId());
 			petHotel.setPet(pet);
 			this.petHotelService.saveCita(petHotel);
 		}
 	catch(TwoPetsBookingException ex) {
-		 result.rejectValue("pet", "no puede solicitar otra estancia para esta mascota", "no puede solicitar otra estancia para esta mascota");
+			
+		 result.rejectValue("pet", "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit(), "por favor seleccione una estancia para la mascota posterior a " + petHotel.getDateExit());
 		 return "petHotel/booking";
 	}
 	}
