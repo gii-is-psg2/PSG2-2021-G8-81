@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "adoptions")
@@ -29,6 +29,9 @@ public class Adoption extends BaseEntity{
 	@JoinColumn(name="new_owner_id")
 	private Owner newOwner;
 	
+	
+	@Column(name="reviewed")
+	private Boolean reviewed;
 	
 	public Pet getPet() {
 		return pet;
@@ -60,6 +63,14 @@ public class Adoption extends BaseEntity{
 
 	public void setNewOwner(Owner newOwner) {
 		this.newOwner = newOwner;
+	}
+
+	public Boolean getReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(Boolean reviewed) {
+		this.reviewed = reviewed;
 	}
 	
 	
