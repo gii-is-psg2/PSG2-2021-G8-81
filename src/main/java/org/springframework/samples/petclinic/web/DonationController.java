@@ -26,7 +26,6 @@ public class DonationController {
 
 	
 	private final DonationService donationService;
-@Autowired
 	private final CauseService causeService;
 	
 	@Autowired
@@ -53,7 +52,8 @@ public class DonationController {
 	
 	@PostMapping(value = {"/donation/{causeId}"})
 	public String processCreationForm(@Valid Donation donation,@PathVariable("causeId") int id, BindingResult result,ModelMap modelMap) throws DataAccessException, TooMuchMoneyException {
-	  	Cause cause = donation.getCause();
+		Cause causes = causeService.findCauseById(id);
+		donation.setCause(causes);
 		if (result.hasErrors()) {
 	  		modelMap.put("donation", donation);
 			return VIEW_DONATION_CREATE_FORM;
@@ -61,11 +61,10 @@ public class DonationController {
 		
 		else {
 			try {
-				donation.setCause(cause);
 				this.donationService.save(donation);
 			} catch (TooMuchMoneyException e) {
 				
-				result.rejectValue("money", "Solo puede donar hasta " + (cause.getBudget()-cause.getTotalBudget()), "Solo puede donar hasta " + (cause.getBudget()-cause.getTotalBudget()));
+				result.rejectValue("money", "Solo puede donar hasta "+(causes.getBudget()-causes.getTotalBudget()) , "Solo puede donar hasta "+(causes.getBudget()-causes.getTotalBudget()));
 				return VIEW_DONATION_CREATE_FORM;
 			}
 			
