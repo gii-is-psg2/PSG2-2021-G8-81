@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 package org.springframework.samples.petclinic.web;
-
-
 import java.util.Collection;
 import java.util.Map;
 
@@ -30,13 +28,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-
-/**
- * @author Juergen Hoeller
- * @author Ken Krebs
- * @author Arjen Poutsma
- * @author Michael Isvy
- */
 @Controller
 public class CauseController {
 
@@ -91,50 +82,11 @@ public class CauseController {
 		}
 		
 	}
-
-	
-//	@GetMapping(value = "/owners/{ownerId}/edit")
-//	public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
-//		Owner owner = this.ownerService.findOwnerById(ownerId);
-//		model.addAttribute(owner);
-//		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-//	}
-//
-//	@PostMapping(value = "/owners/{ownerId}/edit")
-//	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
-//			@PathVariable("ownerId") int ownerId) {
-//		if (result.hasErrors()) {
-//			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-//		}
-//		else {
-//			owner.setId(ownerId);
-//			this.ownerService.saveOwner(owner);
-//			return "redirect:/owners/{ownerId}";
-//		}
-//	}
-//
-//	/**
-//	 * Custom handler for displaying an owner.
-//	 * @param ownerId the ID of the owner to display
-//	 * @return a ModelMap with the model attributes for the view
-//	 */
-//	@GetMapping("/owners/{ownerId}")
-//	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
-//		ModelAndView mav = new ModelAndView("owners/ownerDetails");
-//		mav.addObject(this.ownerService.findOwnerById(ownerId));
-//		return mav;
-//	}
-//
-//	@GetMapping(value = "/owners/{ownerId}/delete")
-//	public String deleteOwner(@PathVariable ("ownerId") int ownerId, Model model) {
-//		Owner owner = this.ownerService.findOwnerById(ownerId);
-//		List<Pet> pets= owner.getPets();
-//		for(Pet p : pets) {
-//			this.petService.deleteAllVisits(p);
-//			this.petService.deletePet(p);
-//		}
-//		this.ownerService.deleteOwner(owner);;
-//		return "redirect:/owners";
-//	}
+	@GetMapping("/causes/{causeId}")
+	public ModelAndView showOwner(@PathVariable("causeId") int causeId) {
+		ModelAndView mav = new ModelAndView("cause/causeDetails");
+		mav.addObject(this.causeService.findCauseById(causeId));
+		return mav;
+	}
 	
 }

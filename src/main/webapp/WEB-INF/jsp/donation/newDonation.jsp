@@ -9,12 +9,14 @@
 <petclinic:layout pageName="donation">
     <jsp:body>
 	<h2>
-           <c:out value="Nueva donación a ${donation.cause.name}"/>
+           <c:out value="Nueva donaciÃ³n a ${donation.cause.name}"/>
         </h2>
   <form:form modelAttribute="donation" class="form-horizontal" id="add-donation-form">
         <div class="form-group has-feedback">
+
             <petclinic:inputField label="Cantidad a donar" name="money" />
         </div>
+
 
         <sec:authorize access="isAuthenticated()">
         <div class="form-group">

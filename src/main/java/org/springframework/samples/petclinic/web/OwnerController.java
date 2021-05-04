@@ -56,12 +56,6 @@ public class OwnerController {
 		this.petService= petService;
 	}
 
-//	@GetMapping(value = { "/adoptions" })
-//	public String showPetsList(Map<String, Object> model) {
-//		Collection<Pet> pets = this.petService.findAllPets();
-//		model.put("adoptions", pets);
-//		return "adoptions/adoptionList";
-//	}
 	
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {

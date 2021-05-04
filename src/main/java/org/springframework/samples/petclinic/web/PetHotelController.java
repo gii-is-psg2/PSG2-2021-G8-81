@@ -85,12 +85,13 @@ public String processCreationForm(@Valid PetHotel petHotel, BindingResult result
 			Pet pet = petService.findPetById(petHotel.getPet().getId());
 			petHotel.setPet(pet);
 			this.petHotelService.saveCita(petHotel);
+			return "redirect:/petsHotel";
 		}
 	catch(TwoPetsBookingException ex) {
 		 result.rejectValue("description", "no puede solicitar otra estancia para esta mascota", "no puede solicitar otra estancia para esta mascota");
 		 return "petHotel/booking";
 	}
 	}
-	return "redirect:/petsHotel";
+	
 }
 }

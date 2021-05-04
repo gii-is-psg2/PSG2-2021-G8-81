@@ -2,14 +2,17 @@ package org.springframework.samples.petclinic.web;
 
 import java.util.Map;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.CauseService;
 import org.springframework.samples.petclinic.service.DonationService;
+import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.exceptions.TooMuchMoneyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DonationController {
 	
 	private static final String VIEW_DONATION_CREATE_FORM = "donation/newDonation";
+
 
 	
 	private final DonationService donationService;
@@ -56,10 +60,12 @@ public class DonationController {
 		donation.setCause(causes);
 		if (result.hasErrors()) {
 	  		modelMap.put("donation", donation);
+
 			return VIEW_DONATION_CREATE_FORM;
 		}
 		
 		else {
+
 			try {
 				this.donationService.save(donation);
 			} catch (TooMuchMoneyException e) {
