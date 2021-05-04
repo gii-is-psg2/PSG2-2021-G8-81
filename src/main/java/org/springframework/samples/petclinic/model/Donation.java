@@ -23,7 +23,7 @@ private LocalDateTime date;
 private Owner owner;
 
 @ManyToOne
-@JoinColumn(name= "cause")
+@JoinColumn(name= "cause_id")
 private Cause cause;
 
 public Cause getCause() {

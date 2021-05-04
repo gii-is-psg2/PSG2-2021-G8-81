@@ -12,11 +12,9 @@
                    class="form-horizontal">
 <div class="form-group has-feedback">
                 <div class="form-group">
-                    <c:out value="Adoptar a ${adoption.pet} ${adoption.previousOwner.firstName}"/>
-                         <petclinic:inputField label="¿Por qué se considera un buen dueño?" name="description" />
- 						</div>
-                                        
-                    
+                    <c:out value="Adoptar a ${adoption.pet} "/>
+                         <petclinic:inputField label="Cuéntanos como le cuidarás" name="description" />
+ 						</div>               
                     </div>
 
                 <button class="btn btn-default" type="submit">Aplicar</button>

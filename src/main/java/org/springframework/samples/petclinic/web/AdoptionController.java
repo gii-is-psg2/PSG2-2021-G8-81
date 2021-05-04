@@ -111,16 +111,40 @@ public class AdoptionController {
 		return "redirect:/adoptions";
 		
 	}
+
+	
+	
+	@GetMapping(value = { "/adoptionAppliedToMyPet" })
+	public String showAdoptionApliedToMyPet(Map<String, Object> model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    String user = clienteDetails.getUsername();
+	    List<Pet> pets = ownerService.findOwnerByUsername(user).getPets();
+		model.put("pets", pets);
+		return "adoptions/petsToAdopt";
+	}
+	
+	
+	
 	@GetMapping(value = { "/adoptionApplied/{petId}" })
 	public String showAdoptionAplied(Map<String, Object> model,@PathVariable("petId") int id) {
 		Collection<Adoption> adop = adoptionService.findAdoptionsByPet(id);
 		model.put("adoptions", adop);
 		return "adoptions/adoptionListMine";
 	}
+	
+	
+	
+	
 	@GetMapping(value = { "/adoption/{adoptionId}" })
 	public String setAdoptionAplied(Map<String, Object> model,@PathVariable("adoptionId") int id) throws DataAccessException, DuplicatedPetNameException {
+		Adoption adp = adoptionService.findAdoptionsByID(id);
+		adp.setDescription("Usted ha sido seleccionado para la adopción");
+		adp.setReviewed(true);
+		adoptionService.aprobeAdoption(id);
 		Pet pet= petService.findPetById(adoptionService.findAdoptionsByID(id).getPet().getId());
 		pet.setOwner(adoptionService.findAdoptionsByID(id).getNewOwner());
+		List<Adoption> removedAdoptions = (List<Adoption>) adoptionService.findAdoptionsByPet(adoptionService.findAdoptionsByID(id).getPet().getId());
+		removedAdoptions.remove(adp);
 		adoptionService.deleteAdoptionByPet(pet.getId());
 		pet.setAdopt(false);
 		petService.savePet(pet);
