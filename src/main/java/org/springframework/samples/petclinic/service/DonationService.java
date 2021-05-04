@@ -10,12 +10,16 @@ import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.samples.petclinic.service.exceptions.TooMuchMoneyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 @Service
 public class DonationService {
 	
+<
+	
 	private DonationRepository donationRepository;
+	@Autowired
 	private CauseService causeService;
+	
+
 	@Autowired
 	public DonationService(DonationRepository donationRepository, CauseService causeService) {
 		this.donationRepository= donationRepository;
@@ -28,20 +32,24 @@ public class DonationService {
 	
 	@Transactional
 	public void save(Donation donation)throws DataAccessException, TooMuchMoneyException{
-		Cause cause = causeService.findCauseById(donation.getCause().getId());
-		Integer money = donation.getMoney();
-		if (money>cause.getBudget()-cause.getTotalBudget()) {
+
+		Cause cause = this.causeService.findCauseById(donation.getCause().getId());
+		if (cause.getBudget()-cause.getTotalBudget()<donation.getMoney()) {
 			throw new TooMuchMoneyException();
 		}
-		cause.setTotalBudget(money+cause.getTotalBudget());
-		causeService.saveCause(cause);
+		cause.setTotalBudget(cause.getTotalBudget()+donation.getMoney());
+
 		donation.setDate(LocalDateTime.now());
 		donationRepository.save(donation);		
 	}
 
 	@Transactional(readOnly= true)
-	public Collection<Donation> findAllDonationsByCause(Integer id){
+	public Collection<Donation> findAllDonationsByCauseId(Integer id){
 		return donationRepository.findDonationsByCause(id);
+	}
+	@Transactional(readOnly= true)
+	public Collection<Donation> findAllDonationsByCause(Cause cause){
+		return donationRepository.findDonationsByCause(cause.getId());
 	}
 
 }

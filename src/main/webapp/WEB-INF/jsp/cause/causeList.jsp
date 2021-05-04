@@ -12,11 +12,12 @@
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>Descripción</th>
+            <th>DescripciÃ³n</th>
             <th>Suma donaciones</th>
             <th>Total</th>
-            <th>Organización</th>
+            <th>OrganizaciÃ³n</th>
             <th>Actions</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -40,8 +41,16 @@
                 <td>
                 	<spring:url value="/causes/{causeId}" var="causeUrl">
                 	<spring:param name="causeId" value="${cause.id}" />
-					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Details</a>
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Detalles</a>
                 </td>
+
+                <td>
+                	<spring:url value="/donation/{donationId}" var="donateUrl">
+                	<spring:param name="donationId" value="${cause.id}" />
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(donateUrl)}">Donar</a>
+                </td>
+				
+
             </tr>
         </c:forEach>
         </tbody>
@@ -51,7 +60,7 @@
         <tr>
             <td>
             	<a class="btn btn-default" href='<spring:url value="/causes/new" htmlEscape="true"/>'>Crear causa</a>
-            	<a class="btn btn-default" href='<spring:url value="/donation" htmlEscape="true"/>'>Crear donación</a>
+
                
             </td>     
         </tr>
