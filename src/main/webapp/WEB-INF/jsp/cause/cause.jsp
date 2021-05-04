@@ -29,7 +29,7 @@
             <td><c:out value="${cause.organization}"/></td>
         </tr>
     </table>
-    <spring:url value="/donation/{causeId}" var="donateUrl">
+ <spring:url value="/donation/{causeId}" var="donateUrl">
                 	<spring:param name="causeId" value="${cause.id}" />
 					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(donateUrl)}">Donar</a>
 

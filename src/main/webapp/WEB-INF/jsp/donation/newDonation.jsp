@@ -6,9 +6,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<petclinic:layout pageName="owners">
+<petclinic:layout pageName="donation">
     <jsp:body>
-<h2>
+	<h2>
            <c:out value="Nueva donación a ${donation.cause.name}"/>
         </h2>
   <form:form modelAttribute="donation" class="form-horizontal" id="add-donation-form">
@@ -19,7 +19,7 @@
         <sec:authorize access="isAuthenticated()">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" type="submit"><fmt:message key="donate"/></button>    
+                        <button class="btn btn-default" type="submit">Donar</button>    
             </div>
         </div>
         </sec:authorize>

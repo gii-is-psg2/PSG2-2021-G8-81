@@ -23,9 +23,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
-import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.service.CauseService;
-import org.springframework.samples.petclinic.service.DonationService;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.validation.BindingResult;
