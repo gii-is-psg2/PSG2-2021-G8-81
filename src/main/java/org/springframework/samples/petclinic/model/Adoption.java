@@ -30,6 +30,9 @@ public class Adoption extends BaseEntity{
 	private Owner newOwner;
 	
 	
+	@Column(name="reviewed")
+	private Boolean reviewed;
+	
 	public Pet getPet() {
 		return pet;
 	}
@@ -60,6 +63,14 @@ public class Adoption extends BaseEntity{
 
 	public void setNewOwner(Owner newOwner) {
 		this.newOwner = newOwner;
+	}
+
+	public Boolean getReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(Boolean reviewed) {
+		this.reviewed = reviewed;
 	}
 	
 	

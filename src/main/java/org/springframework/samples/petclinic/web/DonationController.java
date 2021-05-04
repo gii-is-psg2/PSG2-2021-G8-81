@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.dao.DataAccessException;
@@ -13,11 +15,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 public class DonationController {
 	
-	private static final String VIEW_DONATION_CREATE_FORM = "donation/createDonation";
+	private static final String VIEW_DONATION_CREATE_FORM = "donation/newDonation";
 
 	private final CauseService causeService;
 	private final DonationService donationService;
@@ -35,25 +38,38 @@ public class DonationController {
 	}
 	
 	@GetMapping(value = {"/donation/new"})
-	public String newDonation(ModelMap model) {		
+	public String s(ModelMap model,@PathVariable("donationId") int id) {	
+		Cause cause = causeService.findCauseById(id);
 		Donation donation = new Donation();
-		model.put("donations", donation);
+		donation.setCause(cause);
+		model.put("donation", donation);
 		return VIEW_DONATION_CREATE_FORM;
 
 	}
 	
-	@PostMapping(value = {"/donation/new"})
-	public String processCreationForm(@Valid Donation donation, BindingResult result) throws DataAccessException, TooMuchMoneyException {
+
+	@GetMapping(value = "/donation/{causeId}")
+	public String newDonation(Map<String, Object> model,@PathVariable("causeId") int id) {
+		Cause causes = causeService.findCauseById(id);
+		Donation donation = new Donation();
+		donation.setCause(causes);
+		model.put("cause", causes);
+		model.put("donation", donation);
+		return "wellcome";
+	}
+	
+	@PostMapping(value = {"/donation/{causeId}"})
+	public String processCreationForm(@Valid Donation donation,@PathVariable("donationId") int id, BindingResult result) throws DataAccessException, TooMuchMoneyException {
 	  	if (result.hasErrors()) {
 			return VIEW_DONATION_CREATE_FORM;
 		}
 		
 		else {
-			try {				
-				Cause cause = causeService.findCauseById(donation.getCause().getId());
+			try {
 				
 			} catch (Exception e) {
-				result.rejectValue("money", "No puede donar tanto dinero", "No puede donar tanto dinero");
+				Cause cause = causeService.findCauseById(id);
+				result.rejectValue("money", "Solo puede donar hasta " + (cause.getBudget()-cause.getTotalBudget()), "Solo puede donar hasta " + (cause.getBudget()-cause.getTotalBudget()));
 				return VIEW_DONATION_CREATE_FORM;
 			}
 			donationService.save(donation);

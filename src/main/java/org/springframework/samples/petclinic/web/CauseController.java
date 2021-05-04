@@ -15,9 +15,8 @@
  */
 package org.springframework.samples.petclinic.web;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -25,22 +24,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
-import org.springframework.samples.petclinic.model.Owner;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Vets;
-import org.springframework.samples.petclinic.repository.PetRepository;
-import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.CauseService;
-import org.springframework.samples.petclinic.service.OwnerService;
-import org.springframework.samples.petclinic.service.PetService;
-import org.springframework.samples.petclinic.service.VetService;
-import org.springframework.samples.petclinic.service.UserService;
+import org.springframework.samples.petclinic.service.DonationService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  * @author Juergen Hoeller
@@ -54,10 +45,10 @@ public class CauseController {
 	private static final String VIEWS_CAUSE_CREATE_OR_UPDATE_FORM = "cause/createCauseForm";
 
 	private final CauseService causeService;
-
 	@Autowired
 	public CauseController(CauseService causeService) {
 		this.causeService = causeService;
+
 	}
 
 	@InitBinder
@@ -73,6 +64,14 @@ public class CauseController {
 		model.put("cause", cause);
 		return "cause/causeList";
 	}
+	
+	@GetMapping(value = "/causes/{causeId}")
+	public String showCause(Map<String, Object> model,@PathVariable("causeId") int id) {
+		Cause causes = causeService.findCauseById(id);
+		model.put("cause", causes);
+		return "cause/cause";
+	}
+	
 
 	@GetMapping(value = "/causes/new")
 	public String initCreationForm(Map<String, Object> model) {

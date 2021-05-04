@@ -64,6 +64,7 @@ public class CauseService {
 
 	@Transactional
 	public void saveCause(Cause cause) throws DataAccessException {
+		cause.setTotalBudget(0);
 		causeRepository.save(cause);		
 	}
 

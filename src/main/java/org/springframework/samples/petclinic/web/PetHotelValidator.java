@@ -17,8 +17,6 @@ public class PetHotelValidator implements Validator{
 		
 		PetHotel petHotel = (PetHotel) obj;
 		LocalDate dateEntry = petHotel.getDateEntry();
-		LocalDate dateExit = petHotel.getDateExit();
-		String data = petHotel.getDescription();
 		if (dateEntry==null) {
 			errors.rejectValue("dateEntry", " No puede dejar el campo vacio",
 					"No puede dejar el campo vacio");

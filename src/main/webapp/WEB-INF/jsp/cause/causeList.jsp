@@ -17,13 +17,14 @@
             <th>Total</th>
             <th>Organización</th>
             <th>Actions</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${causes}" var="cause">
             <tr>
                 <td>
-                   	<c:out value="${cause.name}"/></a>
+                   	<c:out value="${cause.name}"/>
                 </td>
                 <td>
                     <c:out value="${cause.description} "/>
@@ -40,21 +41,14 @@
                 <td>
                 	<spring:url value="/causes/{causeId}" var="causeUrl">
                 	<spring:param name="causeId" value="${cause.id}" />
-					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Details</a>
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Detalles</a>
                 </td>
-					<%-- <td>
-					<spring:url value="/vets/{vetId}/edit" var="vetUrl">
-							<spring:param name="vetId" value="${vet.id}" />
-					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(vetUrl)}"><fmt:message key="evet" /></a>
-					</td>
-					<td> 
-                	<spring:url value="/vets/{vetId}/delete" var="deleteUrl">
-        			<spring:param name="vetId" value="${vet.id}"/>
-    				</spring:url>
-    				
-    				
-  			 <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="dvet"/></a>
-                </td> --%>
+                <td>
+                	<spring:url value="/donation/{donationId}" var="donateUrl">
+                	<spring:param name="donationId" value="${cause.id}" />
+					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(donateUrl)}">Donar</a>
+                </td>
+				
             </tr>
         </c:forEach>
         </tbody>
@@ -64,7 +58,6 @@
         <tr>
             <td>
             	<a class="btn btn-default" href='<spring:url value="/causes/new" htmlEscape="true"/>'>Crear causa</a>
-            	<a class="btn btn-default" href='<spring:url value="/donation/new" htmlEscape="true"/>'>Crear donación</a>
                
             </td>     
         </tr>
