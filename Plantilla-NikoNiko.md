@@ -36,8 +36,21 @@ In the retrospective meeting, the team has a discussion about those results.
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
 | Day 1         | :smile:       |    :smile:    |  :smile:       | :worried:      |     :worried:  |
 | Day 2         | :neutral_face:|    :worried:  | :worried:      | :worried:      | :neutral_face: |
-| Day 3         |    :smiley:   |     :smiley:  |  :neutral_face:|                |        -       |
-| Day 5         |:neutral_face: | :neutral_face:|                |                |       :smiley: |
+| Day 3         |    :smiley:   |     :smiley:  |  :neutral_face:|                |                |
+| Day 5         |:neutral_face: | :neutral_face:|                |                |                |
 | Day 6         |:neutral_face: |               |                |                |                |
 | Day 7         |   :smiley:    |               |                |                |                |
+| Day 8         |               |               |                |                |                |
+
+
+## Sprint 4: ITIL 
+
+| Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
+| ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
+| Day 1         |               |               |                |                |     :smiley:   |
+| Day 2         |               |               |                |                |                |
+| Day 3         |               |               |                |                |                |
+| Day 5         |               |               |                |                |                |
+| Day 6         |               |               |                |                |                |
+| Day 7         |               |               |                |                |                |
 | Day 8         |               |               |                |                |                |
