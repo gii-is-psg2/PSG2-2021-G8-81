@@ -43,14 +43,4 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 8         |               |               |                |                |                |
 
 
-## Sprint 4: ITIL 
 
-| Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
-| ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         |               |               |                |                |     :smiley:   |
-| Day 2         |               |               |                |                |                |
-| Day 3         |               |               |                |                |                |
-| Day 5         |               |               |                |                |                |
-| Day 6         |               |               |                |                |                |
-| Day 7         |               |               |                |                |                |
-| Day 8         |               |               |                |                |                |
