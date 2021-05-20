@@ -47,8 +47,8 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         |               |               |                |                |     :smiley:   |
-| Day 2         |               |               |                |                |                |
+| Day 1         |               |               |                |      :smiley:  |     :smiley:   |
+| Day 2         |               |               |                |      :smiley:  |                |
 | Day 3         |               |               |                |                |                |
 | Day 5         |               |               |                |                |                |
 | Day 6         |               |               |                |                |                |
