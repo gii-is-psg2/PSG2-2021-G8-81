@@ -12,10 +12,10 @@
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>DescripciÃ³n</th>
+            <th>Descripción</th>
             <th>Suma donaciones</th>
             <th>Total</th>
-            <th>OrganizaciÃ³n</th>
+            <th>Organización</th>
             <th>Actions</th>
             <th></th>
         </tr>
