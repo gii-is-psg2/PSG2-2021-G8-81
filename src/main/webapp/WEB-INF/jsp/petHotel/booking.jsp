@@ -41,7 +41,7 @@
 
                  <br>
                  
-		 <petclinic:inputField label="Datos de inter�s" name="description" />
+		 <petclinic:inputField label="Datos de interes" name="description" />
 
         <sec:authorize access="hasAuthority('owner')">
         <div class="form-group">
