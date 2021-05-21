@@ -82,11 +82,4 @@ public class CauseController {
 		}
 		
 	}
-	@GetMapping("/causes/{causeId}")
-	public ModelAndView showOwner(@PathVariable("causeId") int causeId) {
-		ModelAndView mav = new ModelAndView("cause/causeDetails");
-		mav.addObject(this.causeService.findCauseById(causeId));
-		return mav;
-	}
-	
 }

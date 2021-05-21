@@ -55,3 +55,4 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 6         |               |               |                |                |                |
 | Day 7         |               |               |                |                |                |
 | Day 8         |               |               |                |                |                |
+
