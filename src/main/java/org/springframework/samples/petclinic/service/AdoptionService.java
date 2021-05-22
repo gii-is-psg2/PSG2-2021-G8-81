@@ -29,6 +29,7 @@ public class AdoptionService {
 
 	@Transactional
 	public void createAdoption(Adoption adoption) {
+		adoption.setReviewed(false);
 		adoptionRepository.save(adoption);
 	}
 	@Transactional
