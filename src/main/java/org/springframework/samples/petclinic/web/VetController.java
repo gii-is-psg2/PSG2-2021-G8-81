@@ -29,6 +29,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -52,8 +53,13 @@ public class VetController {
 	private final VetService vetService;
 
 	@Autowired
-	public VetController(VetService vetService) {
+	public VetController(final VetService vetService) {
 		this.vetService = vetService;
+	}
+	
+	@ModelAttribute("specialties")
+	public Collection<Specialty> populateSpecialties() {
+		return this.vetService.findCollectSpecialties();
 	}
 
 	@GetMapping(value = { "/vets" })
@@ -80,16 +86,14 @@ public class VetController {
 
 	
 	@GetMapping(value = "/vets/new")
-	public String initCreationForm(Map<String, Object> model) {
-		Vet vet = new Vet();
-		Collection<Specialty> specialties = vetService.findCollectSpecialties();
+	public String initCreationForm(final Map<String, Object> model) {
+		final Vet vet = new Vet();
 		model.put("vet", vet);
-		model.put("specialties", specialties);
 		return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 	}
 	
 	@PostMapping(value="/vets/new")
-	public String processCreationForm(@Valid final Vet vet, final BindingResult result, final ModelMap model) {
+	public String processCreationForm(@Valid final Vet vet, final BindingResult result) {
 		if(result.hasErrors()){
 			return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
 		}else {
@@ -102,17 +106,14 @@ public class VetController {
 	@GetMapping(value = "/vets/{vetId}/edit")
 	public String initUpdateVetForm(@PathVariable("vetId") final int vetId, final Model model) {
 		Vet vet = this.vetService.findVetById(vetId);
-		Collection<Specialty> specialties = vetService.findCollectSpecialties();
-		model.addAttribute("specialties", specialties);
         model.addAttribute(vet);
-        return VIEWS_VETS_CREATE_OR_UPDATE_FORM;
-    
-		
+        return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;		
 	}
+	
 	@PostMapping(value = "/vets/{vetId}/edit")
-    public String processUpdateVetForm(@Valid Vet vet, BindingResult result, @PathVariable("vetId") int vetId) {
+    public String processUpdateVetForm(@Valid final Vet vet, BindingResult result, @PathVariable("vetId") final int vetId) {
         if (result.hasErrors()) {
-            return VIEWS_VETS_CREATE_OR_UPDATE_FORM;
+            return VetController.VIEWS_VETS_CREATE_OR_UPDATE_FORM;
         } else {
             vet.setId(vetId);
             this.vetService.saveVet(vet);
