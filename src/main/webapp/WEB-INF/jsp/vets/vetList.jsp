@@ -13,6 +13,8 @@
         <tr>
             <th><fmt:message key="name"/></th>
             <th><fmt:message key="specialties"/></th>
+            <th><fmt:message key="edit"/></th>
+            <th><fmt:message key="delete"/></th>
         </tr>
         </thead>
         <tbody>
