@@ -41,13 +41,9 @@ public class DonationService {
 		donationRepository.save(donation);		
 	}
 
-	@Transactional(readOnly= true)
-	public Collection<Donation> findAllDonationsByCauseId(Integer id){
-		return donationRepository.findDonationsByCause(id);
-	}
-	@Transactional(readOnly= true)
-	public Collection<Donation> findAllDonationsByCause(Cause cause){
-		return donationRepository.findDonationsByCause(cause.getId());
+	@Transactional
+	public Collection<Donation> findDonationsByCause(int causeId)  {
+		return donationRepository.findDonations(causeId);
 	}
 
 }

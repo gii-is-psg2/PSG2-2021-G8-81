@@ -10,7 +10,7 @@
     <h2>Detalles de la causa benéfica</h2>
 
 
-    <table class="table table-striped">
+    <%-- <table class="table table-striped">
         <tr>
             <th>Nombre de la causa benéfica</th>
             <td><b><c:out value="${cause.name}"/></b></td>
@@ -32,6 +32,22 @@
             <td><c:out value="${cause.description}"/></td>
         </tr>
     </table>
-
-
+ --%>    <table id="donationsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre donante</th>
+                <th>Fecha donacion</th>
+                <th>Cantidad donada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${donation}" var="donation">
+                <tr>
+                    <td><c:out value="${donation.owner.firstName} ${donation.owner.lastName}" /></td>
+                    <td><c:out value="${donation.date}" /></td>
+                    <td><c:out value="${donation.money}" /></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </petclinic:layout>

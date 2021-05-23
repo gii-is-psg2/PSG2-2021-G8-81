@@ -21,7 +21,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.service.CauseService;
+import org.springframework.samples.petclinic.service.DonationService;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.validation.BindingResult;
@@ -34,9 +36,11 @@ public class CauseController {
 	private static final String VIEWS_CAUSE_CREATE_OR_UPDATE_FORM = "cause/createCauseForm";
 
 	private final CauseService causeService;
+	private final DonationService donationService;
 	@Autowired
-	public CauseController(CauseService causeService) {
+	public CauseController(CauseService causeService,DonationService donationService) {
 		this.causeService = causeService;
+		this.donationService = donationService;
 
 	}
 
@@ -57,6 +61,8 @@ public class CauseController {
 	@GetMapping(value = "/causes/{causeId}")
 	public String showCause(Map<String, Object> model,@PathVariable("causeId") int id) {
 		Cause causes = causeService.findCauseById(id);
+		Collection<Donation> donations=  donationService.findDonationsByCause(causes.getId());
+		model.put("donation", donations);
 		model.put("cause", causes);
 		return "cause/cause";
 	}
