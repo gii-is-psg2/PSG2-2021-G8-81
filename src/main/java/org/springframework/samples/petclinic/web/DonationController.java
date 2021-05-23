@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -10,10 +11,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.service.CauseService;
 import org.springframework.samples.petclinic.service.DonationService;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.exceptions.TooMuchMoneyException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -31,11 +35,12 @@ public class DonationController {
 	
 	private final DonationService donationService;
 	private final CauseService causeService;
-	
+	private final OwnerService  ownerService;
 	@Autowired
-	public DonationController(CauseService causeService, DonationService donationService) {
+	public DonationController(CauseService causeService, DonationService donationService,OwnerService  ownerService) {
 		this.donationService = donationService;
 		this.causeService = causeService;
+		this.ownerService = ownerService;
 	}
 
 	@InitBinder("donation")
@@ -48,7 +53,11 @@ public class DonationController {
 	@GetMapping(value = "/donation/{causeId}")
 	public String newDonation(Map<String, Object> model,@PathVariable("causeId") int id) {
 		Cause causes = causeService.findCauseById(id);
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String user = clienteDetails.getUsername();
+		Owner owner = ownerService.findOwnerByUsername(user);
 		Donation donation = new Donation();
+		donation.setOwner(owner);
 		donation.setCause(causes);
 		model.put("donation", donation);
 		return VIEW_DONATION_CREATE_FORM;
@@ -58,6 +67,10 @@ public class DonationController {
 	public String processCreationForm(@Valid Donation donation,@PathVariable("causeId") int id, BindingResult result,ModelMap modelMap) throws DataAccessException, TooMuchMoneyException {
 		Cause causes = causeService.findCauseById(id);
 		donation.setCause(causes);
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String user = clienteDetails.getUsername();
+		Owner owner = ownerService.findOwnerByUsername(user);
+		donation.setOwner(owner);
 		if (result.hasErrors()) {
 	  		modelMap.put("donation", donation);
 
@@ -78,5 +91,6 @@ public class DonationController {
 		}
 	
 	}
+	
 	
 }

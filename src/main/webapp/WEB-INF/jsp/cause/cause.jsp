@@ -29,6 +29,24 @@
             <td><c:out value="${cause.organization}"/></td>
         </tr>
     </table>
+       <table id="donationsTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre donante</th>
+                <th>Fecha donacion</th>
+                <th>Cantidad donada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${donation}" var="donation">
+                <tr>
+                    <td><c:out value="${donation.owner.firstName} ${donation.owner.lastName}" /></td>
+                    <td><c:out value="${donation.date}" /></td>
+                    <td><c:out value="${donation.money}" /></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
  <spring:url value="/donation/{causeId}" var="donateUrl">
                 	<spring:param name="causeId" value="${cause.id}" />
 					</spring:url> <a class="btn btn-default" href="${fn:escapeXml(donateUrl)}">Donar</a>

@@ -16,7 +16,6 @@ List<Donation> findDonationsByDate (@Param("date") LocalDateTime date);
 
 Collection<Donation> findAll()throws DataAccessException;
 
-@Query("SELECT donation FROM Donation donation WHERE donation.cause.id=: id")
-List<Donation> findDonationsByCause (@Param("id") Integer causeId);
-
+@Query("SELECT d FROM Donation d where d.cause.id=:causeId")
+Collection<Donation>findDonations(@Param(value = "causeId")int causeId);
 }
