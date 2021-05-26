@@ -21,7 +21,7 @@
 					<td><c:out value="${petHotel.pet.name}" />
 					<td><c:out value="${petHotel.dateEntry}" />
 					<td><c:out value="${petHotel.dateExit}" />
-					<td><c:out value="${petHotel.data}" />
+					<td><c:out value="${petHotel.description}" />
 
                 </tr>
             </c:forEach>

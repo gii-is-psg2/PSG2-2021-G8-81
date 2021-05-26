@@ -95,7 +95,7 @@
 											</p>
 											<p class="text-left">
 												<a href="<c:url value="/adoptionAppliedToMyPet" />"
-													class="btn btn-primary btn-block btn-sm">Conceder adopciï¿½n</a>
+													class="btn btn-primary btn-block btn-sm">Conceder adopción</a>
 											</p>
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"

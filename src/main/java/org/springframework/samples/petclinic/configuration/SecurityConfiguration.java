@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * @author japarejo
  */
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -31,12 +32,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		String owner="owner";
 		String admin="admin";
+		
 		http.authorizeRequests()
 				.antMatchers("/resources/**","/webjars/**","/h2-console/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/","/oups").permitAll()
 				.antMatchers("/users/new").permitAll()
+				.antMatchers("/vets.xml").permitAll()
 				.antMatchers("/admin/**").hasAnyAuthority(admin)
 				.antMatchers("/owners/**").hasAnyAuthority(owner,admin)				
 				.antMatchers("/vets/**").authenticated()
@@ -51,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/donacion/**").permitAll()
 				.antMatchers("/adoptionAppliedToMyPet/**").hasAnyAuthority("owner")
 				.antMatchers("/donation/**").authenticated()
+				.antMatchers("/manage/**").permitAll()
 				.anyRequest().denyAll()
 				.and()
 				 	.formLogin()

@@ -14,7 +14,7 @@
         	<tr>
         	<th>Mascota</th>
             <th>Anterior dueño</th>
-          	<th></th>
+          	<th>Adoptar</th>
            
         	</tr>
         	</thead>
