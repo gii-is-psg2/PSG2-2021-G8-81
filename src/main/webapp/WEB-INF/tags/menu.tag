@@ -22,7 +22,7 @@
 		</div>
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
-
+				
 				<petclinic:menuItem active="${name eq 'home'}" url="/"
 					title="home page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
@@ -95,7 +95,7 @@
 											</p>
 											<p class="text-left">
 												<a href="<c:url value="/adoptionAppliedToMyPet" />"
-													class="btn btn-primary btn-block btn-sm">Conceder adopción</a>
+													class="btn btn-primary btn-block btn-sm">Conceder adopciï¿½n</a>
 											</p>
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
