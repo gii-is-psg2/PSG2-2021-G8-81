@@ -34,7 +34,7 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         | :smile:       |    :smile:    |  :smile:       | :worried:      |     :worried:  |
+| Day 1         | :smile:       |     :smile:   |  :smile:       | :worried:      |     :worried:  |
 | Day 2         | :neutral_face:|    :worried:  | :worried:      | :worried:      | :neutral_face: |
 | Day 3         |    :smiley:   |     :smiley:  |  :neutral_face:|                |                |
 | Day 5         |:neutral_face: | :neutral_face:|                |                |                |
@@ -47,11 +47,11 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | Francisco José| Roberto       | Tomás          | Julia          | Paula          | 
 | ------------- | ------------- | ------------- | -------------  | -------------  | -------------  | 
-| Day 1         |   :smiley:    |               |                |      :smiley:  |     :smiley:   |
-| Day 2         |    :smiley:   |               |                |      :smiley:  |       :smiley: |
-| Day 3         |    :smiley:   |               |                |      :worried: |       :smiley: |
-| Day 4         |    :smiley:   |               |                |      :smiley:  |  :smiley:      |
-| Day 5         |               |               |                |                |                |
+| Day 1         |   :smiley:    |    :smiley:   |                |      :smiley:  |     :smiley:   |
+| Day 2         |    :smiley:   |    :smile:    |                |      :smiley:  |       :smiley: |
+| Day 3         |    :smiley:   |:neutral_face: |                |      :worried: |       :smiley: |
+| Day 4         |    :smiley:   | :worried:     |                |      :smiley:  |  :smiley:      |
+| Day 5         |               |:smiley:       |                |                |                |
 | Day 6         |               |               |                |                |                |
 | Day 7         |               |               |                |                |                |
 | Day 8         |               |               |                |                |                |
