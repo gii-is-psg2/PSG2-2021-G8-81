@@ -47,23 +47,28 @@
 					<span><fmt:message key="error"/></span>
 				</petclinic:menuItem>
 					<sec:authorize access="isAuthenticated()">
-				
+				<sec:authorize access="hasAuthority('owner')">
 					<petclinic:menuItem active="${name eq 'Adoptions'}" url="/adoptions"
 					title="adoptions">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Adoptar</span>
-
 					</petclinic:menuItem>
+					</sec:authorize>
+					
 				<petclinic:menuItem active="${name eq 'cause'}" url="/causes"
 					title="trigger a RuntimeException to see how it is handled">
 					<span>Causas</span>
 
 				</petclinic:menuItem>
+				              
+				<sec:authorize access="hasAuthority('owner')">
 					<petclinic:menuItem active="${name eq 'Adoptions'}" url="/adop"
 					title="adoptions">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Give adoption</span>
 				</petclinic:menuItem>
+				              </sec:authorize>
+				
 				</sec:authorize>
 
 
@@ -93,10 +98,13 @@
 											<p class="text-left">
 												<strong><sec:authentication property="name" /></strong>
 											</p>
+											<sec:authorize access="hasAuthority('owner')">	
 											<p class="text-left">
 												<a href="<c:url value="/adoptionAppliedToMyPet" />"
 													class="btn btn-primary btn-block btn-sm">Conceder adopción</a>
 											</p>
+										    </sec:authorize>
+										
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
 													class="btn btn-primary btn-block btn-sm">Logout</a>
