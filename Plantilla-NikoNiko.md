@@ -55,4 +55,6 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 6         |    :smiley:   |               |                |                |                |
 | Day 7         |   :smiley:    |               |                |                |                |
 | Day 8         |    :smiley:   |               |                |                |                |
+| Day 9         |    :smiley:   |               |                |                |                |
+| Day 10        |    :smiley:   |               |                |                |                |
 
