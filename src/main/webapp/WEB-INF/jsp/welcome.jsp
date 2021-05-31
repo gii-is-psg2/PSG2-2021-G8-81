@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->  
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <petclinic:layout pageName="home">
 
@@ -13,7 +14,9 @@
             <img class="img-responsive" src="${petsImage}"/>
 
             <h2><fmt:message key="group"/></h2>
+            <sec:authorize access="hasAuthority('owner')">
 		        <a class="btn btn-default" href='<spring:url value="/petsHotel" htmlEscape="true"/>'><fmt:message key="photel"/></a>
+              </sec:authorize>
 
         </div>
 
